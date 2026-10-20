@@ -23,9 +23,7 @@ Nestes exercícios, você vai explorar o banco de dados SQL do Oscar e responder
 
 **1.1** Quantos registros existem na tabela de indicados ao Oscar?
 
-Exemplo de resposta: 
-
-R: 1430 registros
+R: 10889 registros
 
 ```sql
 SELECT COUNT(*) FROM oscar_indicados;
@@ -33,13 +31,125 @@ SELECT COUNT(*) FROM oscar_indicados;
 
 **1.2.1** Quais são as diferentes categorias de premiação que existem no banco de dados? Liste todas as categorias únicas.
 
-Exemplo de resposta:
 
 R:
-```ACTOR
-ACTOR IN A LEADING ROLE
+```
+Categotias:
+ACTOR
+ACTRESS
+ART DIRECTION
+CINEMATOGRAPHY
+DIRECTING (Comedy Picture)
+DIRECTING (Dramatic Picture)
+ENGINEERING EFFECTS
+OUTSTANDING PICTURE
+UNIQUE AND ARTISTIC PICTURE
+WRITING (Adaptation)
+WRITING (Original Story)
+WRITING (Title Writing)
+SPECIAL AWARD
+DIRECTING
+WRITING
+OUTSTANDING PRODUCTION
+SOUND RECORDING
+SHORT SUBJECT (Cartoon)
+SHORT SUBJECT (Comedy)
+SHORT SUBJECT (Novelty)
+ASSISTANT DIRECTOR
+FILM EDITING
+MUSIC (Scoring)
+MUSIC (Song)
+DANCE DIRECTION
+WRITING (Screenplay)
 ACTOR IN A SUPPORTING ROLE
-...
+ACTRESS IN A SUPPORTING ROLE
+SHORT SUBJECT (Color)
+SHORT SUBJECT (One-reel)
+SHORT SUBJECT (Two-reel)
+IRVING G. THALBERG MEMORIAL AWARD
+MUSIC (Original Score)
+CINEMATOGRAPHY (Black-and-White)
+CINEMATOGRAPHY (Color)
+SPECIAL EFFECTS
+ART DIRECTION (Black-and-White)
+ART DIRECTION (Color)
+WRITING (Original Screenplay)
+DOCUMENTARY (Short Subject)
+MUSIC (Music Score of a Dramatic Picture)
+MUSIC (Scoring of a Musical Picture)
+OUTSTANDING MOTION PICTURE
+DOCUMENTARY
+MUSIC (Music Score of a Dramatic or Comedy Picture)
+WRITING (Original Motion Picture Story)
+DOCUMENTARY (Feature)
+BEST MOTION PICTURE
+WRITING (Motion Picture Story)
+COSTUME DESIGN (Black-and-White)
+COSTUME DESIGN (Color)
+SPECIAL FOREIGN LANGUAGE FILM AWARD
+WRITING (Story and Screenplay)
+HONORARY FOREIGN LANGUAGE FILM AWARD
+HONORARY AWARD
+FOREIGN LANGUAGE FILM
+WRITING (Screenplay--Adapted)
+WRITING (Screenplay--Original)
+JEAN HERSHOLT HUMANITARIAN AWARD
+COSTUME DESIGN
+SHORT SUBJECT (Live Action)
+WRITING (Screenplay--based on material from another medium)
+WRITING (Story and Screenplay--written directly for the screen)
+SOUND
+MUSIC (Music Score--substantially original)
+MUSIC (Scoring of Music--adaptation or treatment)
+BEST PICTURE
+SOUND EFFECTS
+SPECIAL VISUAL EFFECTS
+MUSIC (Original Music Score)
+MUSIC (Original Score--for a motion picture [not a musical])
+MUSIC (Score of a Musical Picture--original or adaptation)
+MUSIC (Song--Original for the Picture)
+WRITING (Story and Screenplay--based on material not previously published or produced)
+MUSIC (Original Song Score)
+WRITING (Story and Screenplay--based on factual material or material not previously published or produced)
+MUSIC (Original Dramatic Score)
+MUSIC (Scoring: Adaptation and Original Song Score)
+SHORT SUBJECT (Animated)
+SPECIAL ACHIEVEMENT AWARD (Visual Effects)
+MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)
+SHORT FILM (Animated)
+SHORT FILM (Live Action)
+WRITING (Screenplay Adapted from Other Material)
+MUSIC (Original Song)
+SPECIAL ACHIEVEMENT AWARD (Sound Effects)
+ACTOR IN A LEADING ROLE
+ACTRESS IN A LEADING ROLE
+MUSIC (Original Song Score and Its Adaptation or Adaptation Score)
+WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)
+VISUAL EFFECTS
+SPECIAL ACHIEVEMENT AWARD
+SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing)
+MUSIC (Adaptation Score)
+WRITING (Screenplay Based on Material from Another Medium)
+WRITING (Screenplay Written Directly for the Screen)
+MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)
+SPECIAL ACHIEVEMENT AWARD (Sound Editing)
+SHORT FILM (Dramatic Live Action)
+MAKEUP
+SOUND EFFECTS EDITING
+MUSIC (Original Song Score or Adaptation Score)
+WRITING (Screenplay Based on Material Previously Produced or Published)
+MUSIC (Original Musical or Comedy Score)
+SOUND EDITING
+ANIMATED FEATURE FILM
+WRITING (Adapted Screenplay)
+SOUND MIXING
+MAKEUP AND HAIRSTYLING
+PRODUCTION DESIGN
+INTERNATIONAL FEATURE FILM
+DOCUMENTARY FEATURE FILM
+DOCUMENTARY SHORT FILM
+GORDON E. SAWYER AWARD
+AWARD OF COMMENDATION
 ```
 
 ```sql
@@ -48,9 +158,7 @@ SELECT DISTINCT categoria FROM oscar_indicados;
 
 **1.2.2** **Quantas** categorias únicas existem?
 
-R: 92 registros
-
-Exemplo de resposta:
+R: 115 registros
 
 ```sql
 SELECT COUNT(DISTINCT categoria) FROM oscar_indicados;
@@ -58,27 +166,276 @@ SELECT COUNT(DISTINCT categoria) FROM oscar_indicados;
 
 **1.3** Qual foi o primeiro ano de cerimônia do Oscar registrado na base?
 
+R: 1928
+
+```sql
+SELECT ano_cerimonia 
+FROM indicados_ao_oscar 
+ORDER BY edicao_cerimonia ASC 
+LIMIT 1;
+```
+
 **1.4** Qual foi o último ano de cerimônia registrado na base?
+
+R: 2024
+
+```sql
+SELECT ano_cerimonia 
+FROM indicados_ao_oscar 
+ORDER BY edicao_cerimonia DESC
+LIMIT 1;
+```
 
 **1.5** Quantas cerimônias do Oscar estão registradas no total?
 
+R: 10889
+
+```sql
+SELECT COUNT(edicao_cerimonia)  
+FROM indicados_ao_oscar;
+```
+
 **1.6** Atualize os registros da tabela com os dados do Oscar 2025 e 2026 (pesquise os vencedores e adicione-os).
 
----
+```sql
+-- OSCAR 2025 (97ª Edição)
+-- Melhor Ator
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Adrien Brody','The Brutalist',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Timothée Chalamet','A Complete Unknown',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Colman Domingo','Sing Sing',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Ralph Fiennes','Conclave',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Sebastian Stan','The Apprentice',false);
+
+-- Melhor Atriz
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Mikey Madison','Anora',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Cynthia Erivo','Wicked',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Karla Sofía Gascón','Emilia Pérez',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Demi Moore','The Substance',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Fernanda Torres','I\'m Still Here',false);
+
+-- Melhor Ator Coadjuvante (Principais Destaques)
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Kieran Culkin','A Real Pain',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Yura Borisov','Anora',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Edward Norton','A Complete Unknown',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Guy Pearce','The Brutalist',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Jeremy Strong','The Apprentice',false);
+
+-- Melhor Atriz Coadjuvante (Principais Destaques)
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Zoe Saldaña','Emilia Pérez',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Ariana Grande','Wicked',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Felicity Jones','The Brutalist',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Isabella Rossellini','Conclave',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Monica Barbaro','A Complete Unknown',false);
+
+
+-- OSCAR 2026 (98ª Edição)
+-- Melhor Ator
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Michael B. Jordan','Sinners',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Timothée Chalamet','Marty Supreme',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Leonardo DiCaprio','One Battle After Another',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Ethan Hawke','Blue Moon',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Wagner Moura','The Secret Agent',false);
+
+-- Melhor Atriz
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Jessie Buckley','Hamnet',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Rose Byrne','If I Had Legs I\'d Kick You',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Kate Hudson','Song Sung Blue',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Renate Reinsve','Sentimental Value',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Emma Stone','Bugonia',false);
+
+-- Melhor Ator Coadjuvante (Principais Destaques)
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Sean Penn','One Battle After Another',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Benicio del Toro','One Battle After Another',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Jacob Elordi','Frankenstein',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Delroy Lindo','Sinners',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Stellan Skarsgård','Sentimental Value',false);
+
+-- Melhor Atriz Coadjuvante (Principais Destaques)
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Amy Madigan','Weapons',true);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Elle Fanning','Sentimental Value',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Inga Ibsdotter Lilleaas','Sentimental Value',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Wunmi Mosaku','Sinners',false);
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Teyana Taylor','One Battle After Another',false);
+
+```
 
 ## Nível 2: Explorando Categorias
 
 **2.1** Quantas indicações existem para cada categoria? Agrupe por categoria e ordene da mais frequente para a menos frequente.
 
+R:
+CATEGORIA  / QUANTIDADE DE INDICAÇÕES
+DIRECTING	469
+FILM EDITING	450
+ACTOR IN A SUPPORTING ROLE	450
+ACTRESS IN A SUPPORTING ROLE	450
+DOCUMENTARY (Short Subject)	378
+BEST PICTURE	371
+DOCUMENTARY (Feature)	345
+CINEMATOGRAPHY	338
+FOREIGN LANGUAGE FILM	315
+ART DIRECTION	307
+COSTUME DESIGN	295
+MUSIC (Original Score)	270
+ACTRESS	246
+SOUND	245
+ACTOR	242
+ACTOR IN A LEADING ROLE	240
+ACTRESS IN A LEADING ROLE	240
+MUSIC (Original Song)	235
+SHORT FILM (Live Action)	226
+SHORT FILM (Animated)	215
+MUSIC (Song)	215
+SOUND RECORDING	195
+SHORT SUBJECT (Cartoon)	169
+CINEMATOGRAPHY (Black-and-White)	161
+WRITING (Original Screenplay)	160
+VISUAL EFFECTS	155
+MUSIC (Music Score of a Dramatic or Comedy Picture)	148
+ART DIRECTION (Black-and-White)	138
+CINEMATOGRAPHY (Color)	135
+HONORARY AWARD	133
+MUSIC (Scoring of a Musical Picture)	127
+WRITING (Screenplay Written Directly for the Screen)	120
+ART DIRECTION (Color)	112
+WRITING (Adapted Screenplay)	110
+WRITING (Screenplay)	104
+OUTSTANDING PRODUCTION	102
+ANIMATED FEATURE FILM	99
+WRITING (Screenplay--based on material from another medium)	95
+SPECIAL EFFECTS	93
+SHORT SUBJECT (One-reel)	90
+BEST MOTION PICTURE	90
+MAKEUP	87
+SOUND EDITING	86
+SOUND MIXING	85
+SHORT SUBJECT (Two-reel)	81
+COSTUME DESIGN (Black-and-White)	77
+COSTUME DESIGN (Color)	77
+SHORT SUBJECT (Live Action)	68
+WRITING (Screenplay Based on Material from Another Medium)	65
+MUSIC (Scoring)	64
+PRODUCTION DESIGN	60
+WRITING (Story and Screenplay--written directly for the screen)	60
+SPECIAL AWARD	56
+WRITING (Screenplay Based on Material Previously Produced or Published)	55
+WRITING (Original Story)	52
+WRITING (Motion Picture Story)	50
+SOUND EFFECTS EDITING	47
+MAKEUP AND HAIRSTYLING	46
+IRVING G. THALBERG MEMORIAL AWARD	45
+JEAN HERSHOLT HUMANITARIAN AWARD	44
+MUSIC (Original Dramatic Score)	41
+WRITING (Story and Screenplay)	35
+ASSISTANT DIRECTOR	35
+MUSIC (Scoring of Music--adaptation or treatment)	30
+OUTSTANDING MOTION PICTURE	30
+MUSIC (Song--Original for the Picture)	25
+DOCUMENTARY	25
+WRITING (Original Motion Picture Story)	25
+INTERNATIONAL FEATURE FILM	25
+DANCE DIRECTION	21
+MUSIC (Original Musical or Comedy Score)	20
+MUSIC (Music Score of a Dramatic Picture)	20
+WRITING (Story and Screenplay--based on factual material or material not previously published or produced)	20
+MUSIC (Music Score--substantially original)	20
+WRITING (Adaptation)	17
+SPECIAL VISUAL EFFECTS	16
+SHORT SUBJECT (Comedy)	13
+SHORT SUBJECT (Novelty)	12
+WRITING	11
+SOUND EFFECTS	10
+WRITING (Screenplay Adapted from Other Material)	10
+MUSIC (Original Music Score)	10
+MUSIC (Original Score--for a motion picture [not a musical])	10
+MUSIC (Score of a Musical Picture--original or adaptation)	10
+WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)	10
+DOCUMENTARY FEATURE FILM	10
+DOCUMENTARY SHORT FILM	10
+SHORT SUBJECT (Animated)	9
+SPECIAL ACHIEVEMENT AWARD (Visual Effects)	9
+MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)	9
+OUTSTANDING PICTURE	8
+MUSIC (Original Song Score)	8
+MUSIC (Scoring: Adaptation and Original Song Score)	8
+MUSIC (Original Song Score and Its Adaptation or Adaptation Score)	6
+SHORT SUBJECT (Color)	6
+MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score)	6
+HONORARY FOREIGN LANGUAGE FILM AWARD	5
+WRITING (Screenplay--Adapted)	5
+WRITING (Screenplay--Original)	5
+WRITING (Story and Screenplay--based on material not previously published or produced)	5
+SPECIAL ACHIEVEMENT AWARD (Sound Effects Editing)	4
+SHORT FILM (Dramatic Live Action)	3
+DIRECTING (Dramatic Picture)	3
+MUSIC (Original Song Score or Adaptation Score)	3
+ENGINEERING EFFECTS	3
+UNIQUE AND ARTISTIC PICTURE	3
+WRITING (Title Writing)	3
+SPECIAL ACHIEVEMENT AWARD	3
+MUSIC (Adaptation Score)	3
+SPECIAL FOREIGN LANGUAGE FILM AWARD	2
+DIRECTING (Comedy Picture)	2
+SPECIAL ACHIEVEMENT AWARD (Sound Editing)	1
+GORDON E. SAWYER AWARD	1
+AWARD OF COMMENDATION	1
+SPECIAL ACHIEVEMENT AWARD (Sound Effects)	1
+
+```sql
+SELECT categoria, COUNT(categoria) 
+FROM indicados_ao_oscar
+GROUP BY categoria
+ORDER BY count(categoria) DESC;
+```
+
 **2.2** Qual categoria teve mais indicações ao longo da história do Oscar?
+
+R: DIRECTING com 469 indicacões
+
+```sql
+SELECT categoria, COUNT(categoria) 
+FROM indicados_ao_oscar
+GROUP BY categoria
+ORDER BY count(categoria) DESC
+LIMIT 1;
+```
 
 **2.3** Qual categoria teve menos indicações ao longo da história?
 
+R: SPECIAL ACHIEVEMENT AWARD (Sound Editing)
+GORDON E. SAWYER AWARD
+AWARD OF COMMENDATION
+SPECIAL ACHIEVEMENT AWARD (Sound Effects) 
+todos com 1 indicação
+
+```sql
+SELECT categoria, COUNT(categoria) 
+FROM indicados_ao_oscar
+GROUP BY categoria
+ORDER BY count(categoria) 
+LIMIT 1;
+```
+
 **2.4** A partir de que ano a categoria "ACTRESS" deixou de existir? (Dica: procure a última cerimônia com essa categoria)
+
+R:
+
+```sql
+```
 
 **2.5** Quais categorias existiam na primeira cerimônia (1928) e não existem mais hoje?
 
+R:
+
+```sql
+```
+
 **2.6** Liste todas as categorias que contêm a palavra "DIRECTING" no nome.
+
+R:
+
+```sql
+```
 
 ---
 
