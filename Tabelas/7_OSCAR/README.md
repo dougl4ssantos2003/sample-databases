@@ -264,6 +264,7 @@ INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categ
 **2.1** Quantas indicações existem para cada categoria? Agrupe por categoria e ordene da mais frequente para a menos frequente.
 
 R:
+```
 CATEGORIA  / QUANTIDADE DE INDICAÇÕES
 DIRECTING	469
 FILM EDITING	450
@@ -380,6 +381,7 @@ SPECIAL ACHIEVEMENT AWARD (Sound Editing)	1
 GORDON E. SAWYER AWARD	1
 AWARD OF COMMENDATION	1
 SPECIAL ACHIEVEMENT AWARD (Sound Effects)	1
+```
 
 ```sql
 SELECT categoria, COUNT(categoria) 
@@ -418,9 +420,10 @@ LIMIT 1;
 
 **2.4** A partir de que ano a categoria "ACTRESS" deixou de existir? (Dica: procure a última cerimônia com essa categoria)
 
-R:
+R: Essa categoria não deixou de existir no Oscar.
 
 ```sql
+select max(ano_cerimonia) from indicados_ao_oscar where categoria = 'actress';
 ```
 
 **2.5** Quais categorias existiam na primeira cerimônia (1928) e não existem mais hoje?
