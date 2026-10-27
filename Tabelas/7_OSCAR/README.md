@@ -429,15 +429,46 @@ select max(ano_cerimonia) from indicados_ao_oscar where categoria = 'actress';
 **2.5** Quais categorias existiam na primeira cerimônia (1928) e não existem mais hoje?
 
 R:
+```
+ART DIRECTION
+CINEMATOGRAPHY
+DIRECTING (Comedy Picture)
+DIRECTING (Dramatic Picture)
+ENGINEERING EFFECTS
+OUTSTANDING PICTURE
+UNIQUE AND ARTISTIC PICTURE
+WRITING (Adaptation)
+WRITING (Original Story)
+WRITING (Title Writing)
+SPECIAL AWARD
+```
 
 ```sql
+
+SELECT DISTINCT categoria 
+FROM indicados_ao_oscar
+WHERE ano_cerimonia = 1928
+  AND categoria NOT IN (
+      SELECT DISTINCT categoria 
+      FROM indicados_ao_oscar 
+      WHERE ano_cerimonia = 2026 
+  );
+
 ```
 
 **2.6** Liste todas as categorias que contêm a palavra "DIRECTING" no nome.
 
 R:
+```
+DIRECTING (Comedy Picture)
+DIRECTING (Dramatic Picture)
+DIRECTING
+```
 
 ```sql
+select distinct categoria 
+from indicados_ao_oscar
+where categoria like '%DIRECTING%';
 ```
 
 ---
@@ -448,11 +479,55 @@ R:
 
 **3.1** Quantas vezes Natalie Portman foi indicada ao Oscar?
 
+R: 3
+
+```sql
+SELECT COUNT(*) FROM indicados_ao_oscar
+WHERE nome_indicado LIKE "%Natalie Portman%";
+```
+
 **3.2** Quantos Oscars Natalie Portman ganhou?
+
+R: 1 vez
+
+```sql
+SELECT COUNT(*) FROM indicados_ao_oscar
+WHERE nome_indicado LIKE "%Natalie Portman%" 
+and vencedor = true;
+```
 
 **3.3** Em quais anos e por quais filmes Natalie Portman foi indicada?
 
+R:
+```
+Ano / Filme
+2005	Closer
+2011	Black Swan
+2017	Jackie
+```
+
+```sql
+SELECT ano_cerimonia, nome_filme 
+FROM indicados_ao_oscar
+WHERE nome_indicado LIKE "%Natalie Portman%";
+```
+
 **3.4** Liste todas as indicações de Natalie Portman mostrando: ano, categoria, filme e se venceu.
+
+R:
+```
+Ano  /         Categoria           / Filme      / Venceu?
+2005	ACTRESS IN A SUPPORTING ROLE	Closer	     Não Venceu
+2011	ACTRESS IN A LEADING ROLE	   Black Swan	  Venceu
+2017	ACTRESS IN A LEADING ROLE	   Jackie	     Não Venceu
+```
+
+```sql
+SELECT ano_cerimonia, categoria, nome_filme, 
+if(vencedor = true, 'Venceu', 'Não Venceu') as vencendor
+FROM indicados_ao_oscar
+WHERE nome_indicado LIKE "%Natalie Portman%";
+```
 
 ### Viola Davis
 
@@ -478,19 +553,78 @@ vencedor = true;
 
 **3.7** Por quais filmes Viola Davis foi indicada?
 
+R:
+```
+Filmes
+Doubt
+The Help
+Fences
+Ma Rainey's Black Bottom
+```
+```sql
+select nome_filme
+from indicados_ao_oscar
+where nome_indicado = "Viola Davis";
+```
+
 ### Amy Adams
 
 **3.8** Amy Adams já ganhou algum Oscar?
 
+R: Não ganhou
+
+```sql
+select count(*) from indicados_ao_oscar
+where nome_indicado  
+like "%Amy Adams%" and vencedor = true;
+```
+
 **3.9** Quantas vezes Amy Adams foi indicada sem ganhar?
+
+R: 6 Vezes
+
+```sql
+select count(*) from indicados_ao_oscar
+where nome_indicado  
+like "%Amy Adams%"; 
+```
 
 ### Denzel Washington
 
 **3.10** Denzel Washington já ganhou algum Oscar?
 
+R: Ganhou 2 vezes
+
+```sql
+select count(*) from indicados_ao_oscar
+where nome_indicado like "%Denzel Washington%"
+and vencedor = true;
+```
+
 **3.11** Quantas vezes Denzel Washington foi indicado ao Oscar?
 
+R: Foi indicado 10 vezes.
+
+```sql
+select count(*) from indicados_ao_oscar
+where nome_indicado like "%Denzel Washington%";
+```
+
 **3.12** Liste todos os Oscars que Denzel Washington ganhou (ano, categoria, filme).
+
+R:
+```
+ Ano /     Categoria            /  Nome Filme 
+1990	ACTOR IN A SUPPORTING ROLE	   Glory
+2002	ACTOR IN A LEADING ROLE	   Training Day
+```
+
+```sql
+select ano_cerimonia, categoria, nome_filme 
+from indicados_ao_oscar
+where nome_indicado like "%Denzel Washington%"
+and vencedor = true; 
+```
 
 ---
 
