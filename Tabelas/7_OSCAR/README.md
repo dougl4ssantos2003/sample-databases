@@ -632,13 +632,142 @@ and vencedor = true;
 
 **4.1** Quem ganhou o primeiro Oscar para Melhor Atriz (ACTRESS)? Em que ano e por qual filme?
 
+R:
+```
+Nome          Ano     Filme
+Janet Gaynor	1928	7th Heaven
+```
+
+```sql
+select  nome_indicado, ano_cerimonia, nome_filme
+from indicados_ao_oscar
+where vencedor = true and categoria = 'ACTRESS'
+and ano_cerimonia in (
+select min(ano_cerimonia) as menor_ano
+from indicados_ao_oscar); 
+```
+
 **4.2** Quem ganhou o primeiro Oscar para Melhor Ator (ACTOR)? Em que ano e por qual filme?
+
+R:
+```
+Nome          Ano     Filme
+Emil Jannings	1928	The Last Command
+```
+
+```sql
+select  nome_indicado, ano_cerimonia, nome_filme
+from indicados_ao_oscar
+where vencedor = true and categoria = 'ACTOR'
+and ano_cerimonia in (
+select min(ano_cerimonia) as menor_ano
+from indicados_ao_oscar); 
+```
 
 **4.3** Quantos vencedores existem ao todo na base de dados?
 
+R: 2477
+
+```sql
+select  count(vencedor)
+from indicados_ao_oscar
+where vencedor = true;
+```
+
 **4.4** Liste todos os filmes que ganharam o Oscar de Melhor Filme (categoria "OUTSTANDING PICTURE" ou "BEST PICTURE").
 
+R:
+```
+Wings
+The Broadway Melody
+Lawrence of Arabia
+Tom Jones
+My Fair Lady
+The Sound of Music
+A Man for All Seasons
+In the Heat of the Night
+Oliver!
+Midnight Cowboy
+Patton
+The French Connection
+The Godfather
+The Sting
+The Godfather Part II
+One Flew over the Cuckoo's Nest
+Rocky
+Annie Hall
+The Deer Hunter
+Kramer vs. Kramer
+Ordinary People
+Chariots of Fire
+Gandhi
+Terms of Endearment
+Amadeus
+Out of Africa
+Platoon
+The Last Emperor
+Rain Man
+Driving Miss Daisy
+Dances With Wolves
+The Silence of the Lambs
+Unforgiven
+Schindler's List
+Forrest Gump
+Braveheart
+The English Patient
+Titanic
+Shakespeare in Love
+American Beauty
+Gladiator
+A Beautiful Mind
+Chicago
+The Lord of the Rings: The Return of the King
+Million Dollar Baby
+Crash
+The Departed
+No Country for Old Men
+Slumdog Millionaire
+The Hurt Locker
+The King's Speech
+The Artist
+Argo
+12 Years a Slave
+Birdman or (The Unexpected Virtue of Ignorance)
+Spotlight
+Moonlight
+The Shape of Water
+Green Book
+Parasite
+Nomadland
+CODA
+Everything Everywhere All at Once
+Oppenheimer
+Anora
+```
+
+```sql
+select  nome_filme
+from indicados_ao_oscar
+where vencedor = true and categoria in(
+select categoria
+from indicados_ao_oscar
+where categoria = "OUTSTANDING PICTURE" 
+or categoria = "BEST PICTURE");
+```
+
 **4.5** Quantos filmes diferentes já ganharam o Oscar?
+
+R:65 filmes
+
+```sql
+select count(nome_filme)
+from indicados_ao_oscar
+where vencedor = true and categoria in(
+select categoria
+from indicados_ao_oscar
+where categoria = "OUTSTANDING PICTURE" 
+or categoria = "BEST PICTURE");
+```
 
 ---
 
@@ -646,15 +775,45 @@ and vencedor = true;
 
 **5.1** Quais atores/atrizes foram indicados mais de uma vez? Liste o nome e o número de indicações.
 
+R:
+
+```sql
+```
+
 **5.2** Qual ator ou atriz tem o maior número de indicações na história do Oscar?
+
+R:
+
+```sql
+```
 
 **5.3** Quais atores foram indicados mais de 3 vezes, mas nunca ganharam?
 
+R:
+
+```sql
+```
+
 **5.4** Encontre todos os artistas que foram indicados em categorias diferentes (ex: ator e diretor).
+
+R:
+
+```sql
+```
 
 **5.5** Quantos indicados têm exatamente 1 indicação na história?
 
-**5.6** Qual o maior números de indicados em um único ano? Essa é uma pergunta franca.  
+R:
+
+```sql
+```
+
+**5.6** Qual o maior números de indicados em um único ano? Essa é uma pergunta franca.
+
+R:
+
+```sql
+```
 
 ---
 
