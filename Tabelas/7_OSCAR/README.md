@@ -198,65 +198,120 @@ FROM indicados_ao_oscar;
 **1.6** Atualize os registros da tabela com os dados do Oscar 2025 e 2026 (pesquise os vencedores e adicione-os).
 
 ```sql
--- OSCAR 2025 (97ª Edição)
--- Melhor Ator
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Adrien Brody','The Brutalist',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Timothée Chalamet','A Complete Unknown',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Colman Domingo','Sing Sing',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Ralph Fiennes','Conclave',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR','Sebastian Stan','The Apprentice',false);
+-- ========================================================
+-- OSCAR 2025 (97ª Edição) - DADOS REAIS
+-- ========================================================
 
--- Melhor Atriz
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Mikey Madison','Anora',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Cynthia Erivo','Wicked',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Karla Sofía Gascón','Emilia Pérez',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Demi Moore','The Substance',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS','Fernanda Torres','I\'m Still Here',false);
+-- BEST PICTURE
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'BEST PICTURE','Anora','Anora',true),
+(2024,2025,97,'BEST PICTURE','The Substance','The Substance',false),
+(2024,2025,97,'BEST PICTURE','The Brutalist','The Brutalist',false),
+(2024,2025,97,'BEST PICTURE','Conclave','Conclave',false),
+(2024,2025,97,'BEST PICTURE','Dune: Part Two','Dune: Part Two',false),
+(2024,2025,97,'BEST PICTURE','Emilia Pérez','Emilia Pérez',false),
+(2024,2025,97,'BEST PICTURE','A Complete Unknown','A Complete Unknown',false),
+(2024,2025,97,'BEST PICTURE','Nickel Boys','Nickel Boys',false),
+(2024,2025,97,'BEST PICTURE','Sing Sing','Sing Sing',false),
+(2024,2025,97,'BEST PICTURE','Wicked','Wicked',false);
 
--- Melhor Ator Coadjuvante (Principais Destaques)
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Kieran Culkin','A Real Pain',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Yura Borisov','Anora',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Edward Norton','A Complete Unknown',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Guy Pearce','The Brutalist',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTOR IN A SUPPORTING ROLE','Jeremy Strong','The Apprentice',false);
+-- DIRECTING
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'DIRECTING','Sean Baker','Anora',true),
+(2024,2025,97,'DIRECTING','Brady Corbet','The Brutalist',false),
+(2024,2025,97,'DIRECTING','Coralie Fargeat','The Substance',false),
+(2024,2025,97,'DIRECTING','Jacques Audiard','Emilia Pérez',false),
+(2024,2025,97,'DIRECTING','James Mangold','A Complete Unknown',false);
 
--- Melhor Atriz Coadjuvante (Principais Destaques)
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Zoe Saldaña','Emilia Pérez',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Ariana Grande','Wicked',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Felicity Jones','The Brutalist',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Isabella Rossellini','Conclave',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2024,2025,97,'ACTRESS IN A SUPPORTING ROLE','Monica Barbaro','A Complete Unknown',false);
+-- ACTOR
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'ACTOR','Adrien Brody','The Brutalist',true),
+(2024,2025,97,'ACTOR','Timothée Chalamet','A Complete Unknown',false),
+(2024,2025,97,'ACTOR','Colman Domingo','Sing Sing',false),
+(2024,2025,97,'ACTOR','Ralph Fiennes','Conclave',false),
+(2024,2025,97,'ACTOR','Sebastian Stan','The Apprentice',false);
+
+-- ACTRESS
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'ACTRESS','Mikey Madison','Anora',true),
+(2024,2025,97,'ACTRESS','Fernanda Torres','I\'m Still Here',false),
+(2024,2025,97,'ACTRESS','Cynthia Erivo','Wicked',false),
+(2024,2025,97,'ACTRESS','Demi Moore','The Substance',false),
+(2024,2025,97,'ACTRESS','Karla Sofía Gascón','Emilia Pérez',false);
+
+-- INTERNATIONAL FEATURE FILM
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'INTERNATIONAL FEATURE FILM','I\'m Still Here','I\'m Still Here',true),
+(2024,2025,97,'INTERNATIONAL FEATURE FILM','The Girl with the Needle','The Girl with the Needle',false),
+(2024,2025,97,'INTERNATIONAL FEATURE FILM','The Seed of the Sacred Fig','The Seed of the Sacred Fig',false),
+(2024,2025,97,'INTERNATIONAL FEATURE FILM','Emilia Pérez','Emilia Pérez',false),
+(2024,2025,97,'INTERNATIONAL FEATURE FILM','Flow','Flow',false);
+
+-- ANIMATED FEATURE FILM
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2024,2025,97,'ANIMATED FEATURE FILM','Flow','Flow',true),
+(2024,2025,97,'ANIMATED FEATURE FILM','Inside Out 2','Inside Out 2',false),
+(2024,2025,97,'ANIMATED FEATURE FILM','Memoir of a Snail','Memoir of a Snail',false),
+(2024,2025,97,'ANIMATED FEATURE FILM','The Wild Robot','The Wild Robot',false),
+(2024,2025,97,'ANIMATED FEATURE FILM','Wallace & Gromit: Vengeance Most Fowl','Wallace & Gromit: Vengeance Most Fowl',false);
 
 
--- OSCAR 2026 (98ª Edição)
--- Melhor Ator
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Michael B. Jordan','Sinners',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Timothée Chalamet','Marty Supreme',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Leonardo DiCaprio','One Battle After Another',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Ethan Hawke','Blue Moon',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR','Wagner Moura','The Secret Agent',false);
+-- ========================================================
+-- OSCAR 2026 (98ª Edição) - DADOS REAIS
+-- ========================================================
 
--- Melhor Atriz
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Jessie Buckley','Hamnet',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Rose Byrne','If I Had Legs I\'d Kick You',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Kate Hudson','Song Sung Blue',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Renate Reinsve','Sentimental Value',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS','Emma Stone','Bugonia',false);
+-- BEST PICTURE
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'BEST PICTURE','Sinners','Sinners',false),
+(2025,2026,98,'BEST PICTURE','One Battle After Another','One Battle After Another',false),
+(2025,2026,98,'BEST PICTURE','Frankenstein','Frankenstein',false),
+(2025,2026,98,'BEST PICTURE','Marty Supreme','Marty Supreme',false),
+(2025,2026,98,'BEST PICTURE','Sentimental Value','Sentimental Value',false),
+(2025,2026,98,'BEST PICTURE','Hamnet','Hamnet',false),
+(2025,2026,98,'BEST PICTURE','Bugonia','Bugonia',false),
+(2025,2026,98,'BEST PICTURE','F1','F1',false),
+(2025,2026,98,'BEST PICTURE','The Secret Agent','The Secret Agent',false),
+(2025,2026,98,'BEST PICTURE','Train Dreams','Train Dreams',false);
 
--- Melhor Ator Coadjuvante (Principais Destaques)
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Sean Penn','One Battle After Another',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Benicio del Toro','One Battle After Another',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Jacob Elordi','Frankenstein',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Delroy Lindo','Sinners',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTOR IN A SUPPORTING ROLE','Stellan Skarsgård','Sentimental Value',false);
+-- DIRECTING
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'DIRECTING','Chloé Zhao','Hamnet',false),
+(2025,2026,98,'DIRECTING','Josh Safdie','Marty Supreme',false),
+(2025,2026,98,'DIRECTING','Paul Thomas Anderson','One Battle After Another',false),
+(2025,2026,98,'DIRECTING','Joachim Trier','Sentimental Value',false),
+(2025,2026,98,'DIRECTING','Ryan Coogler','Sinners',false);
 
--- Melhor Atriz Coadjuvante (Principais Destaques)
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Amy Madigan','Weapons',true);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Elle Fanning','Sentimental Value',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Inga Ibsdotter Lilleaas','Sentimental Value',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Wunmi Mosaku','Sinners',false);
-INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES (2025,2026,98,'ACTRESS IN A SUPPORTING ROLE','Teyana Taylor','One Battle After Another',false);
+-- ACTOR
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'ACTOR','Timothée Chalamet','Marty Supreme',false),
+(2025,2026,98,'ACTOR','Leonardo DiCaprio','One Battle After Another',false),
+(2025,2026,98,'ACTOR','Ethan Hawke','Blue Moon',false),
+(2025,2026,98,'ACTOR','Michael B. Jordan','Sinners',false),
+(2025,2026,98,'ACTOR','Wagner Moura','The Secret Agent',false);
 
+-- ACTRESS
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'ACTRESS','Jessie Buckley','Hamnet',false),
+(2025,2026,98,'ACTRESS','Rose Byrne','If I Had Legs I\'d Kick You',false),
+(2025,2026,98,'ACTRESS','Kate Hudson','Song Sung Blue',false),
+(2025,2026,98,'ACTRESS','Renate Reinsve','Sentimental Value',false),
+(2025,2026,98,'ACTRESS','Emma Stone','Bugonia',false);
+
+-- INTERNATIONAL FEATURE FILM
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'INTERNATIONAL FEATURE FILM','The Secret Agent','The Secret Agent',false),
+(2025,2026,98,'INTERNATIONAL FEATURE FILM','It Was Just an Accident','It Was Just an Accident',false),
+(2025,2026,98,'INTERNATIONAL FEATURE FILM','Sentimental Value','Sentimental Value',false),
+(2025,2026,98,'INTERNATIONAL FEATURE FILM','Sirât','Sirât',false),
+(2025,2026,98,'INTERNATIONAL FEATURE FILM','The Voice of Hind Rajab','The Voice of Hind Rajab',false);
+
+-- ANIMATED FEATURE FILM
+INSERT INTO indicados_ao_oscar(ano_filmagem,ano_cerimonia,edicao_cerimonia,categoria,nome_indicado,nome_filme,vencedor) VALUES 
+(2025,2026,98,'ANIMATED FEATURE FILM','K-Pop: Demon Hunters','K-Pop: Demon Hunters',false),
+(2025,2026,98,'ANIMATED FEATURE FILM','Zootopia 2','Zootopia 2',false),
+(2025,2026,98,'ANIMATED FEATURE FILM','Arco','Arco',false),
+(2025,2026,98,'ANIMATED FEATURE FILM','Elio','Elio',false),
+(2025,2026,98,'ANIMATED FEATURE FILM','Little Amélie','Little Amélie',false);
 ```
 
 ## Nível 2: Explorando Categorias
@@ -776,22 +831,446 @@ or categoria = "BEST PICTURE");
 **5.1** Quais atores/atrizes foram indicados mais de uma vez? Liste o nome e o número de indicações.
 
 R:
+```
+Nome indicado / Numero de Indicações
+Meryl Streep	21
+Katharine Hepburn	12
+Jack Nicholson	12
+Bette Davis	11
+Spencer Tracy	9
+Laurence Olivier	9
+Paul Newman	9
+Al Pacino	9
+Denzel Washington	9
+Marlon Brando	8
+Geraldine Page	8
+Jack Lemmon	8
+Peter O'Toole	8
+Robert De Niro	8
+Glenn Close	8
+Judi Dench	8
+Cate Blanchett	8
+Greer Garson	7
+Ingrid Bergman	7
+Richard Burton	7
+Dustin Hoffman	7
+Jane Fonda	7
+Jeff Bridges	7
+Robert Duvall	7
+Leonardo DiCaprio	7
+Kate Winslet	7
+Paul Muni	6
+Norma Shearer	6
+Deborah Kerr	6
+Thelma Ritter	6
+Maggie Smith	6
+Michael Caine	6
+Vanessa Redgrave	6
+Ellen Burstyn	6
+Sissy Spacek	6
+Jessica Lange	6
+Tom Hanks	6
+Frances McDormand	6
+Anthony Hopkins	6
+Amy Adams	6
+Fredric March	5
+Irene Dunne	5
+Gary Cooper	5
+James Stewart	5
+Olivia de Havilland	5
+Jennifer Jones	5
+Gregory Peck	5
+Susan Hayward	5
+Arthur Kennedy	5
+Audrey Hepburn	5
+Elizabeth Taylor	5
+Shirley MacLaine	5
+Anne Bancroft	5
+Albert Finney	5
+Gene Hackman	5
+Jodie Foster	5
+Susan Sarandon	5
+Morgan Freeman	5
+Annette Bening	5
+Daniel Day-Lewis	5
+Sean Penn	5
+Julianne Moore	5
+Nicole Kidman	5
+Michelle Williams	5
+Bradley Cooper	5
+Emma Stone	5
+Walter Huston	4
+Walter Brennan	4
+Charles Boyer	4
+Barbara Stanwyck	4
+Mickey Rooney	4
+Claude Rains	4
+Rosalind Russell	4
+Agnes Moorehead	4
+Ethel Barrymore	4
+Jane Wyman	4
+Montgomery Clift	4
+Shelley Winters	4
+Lee Grant	4
+Alec Guinness	4
+Anthony Quinn	4
+Burt Lancaster	4
+Joanne Woodward	4
+Maureen Stapleton	4
+George C. Scott	4
+Julie Christie	4
+Alan Arkin	4
+Warren Beatty	4
+Jon Voight	4
+Jane Alexander	4
+Glenda Jackson	4
+Marsha Mason	4
+Diane Keaton	4
+Ben Kingsley	4
+William Hurt	4
+Willem Dafoe	4
+Robin Williams	4
+Holly Hunter	4
+Julia Roberts	4
+Kathy Bates	4
+Tommy Lee Jones	4
+Emma Thompson	4
+Helen Mirren	4
+Ed Harris	4
+Brad Pitt	4
+Geoffrey Rush	4
+Javier Bardem	4
+Joaquin Phoenix	4
+Renée Zellweger	4
+Philip Seymour Hoffman	4
+George Clooney	4
+Penélope Cruz	4
+Saoirse Ronan	4
+Viola Davis	4
+Christian Bale	4
+Mark Ruffalo	4
+Jennifer Lawrence	4
+Gloria Swanson	3
+Ronald Colman	3
+Greta Garbo	3
+Charles Laughton	3
+Clark Gable	3
+William Powell	3
+Claudette Colbert	3
+Claire Trevor	3
+James Cagney	3
+Fay Bainter	3
+Wendy Hiller	3
+Joan Fontaine	3
+Charles Coburn	3
+Teresa Wright	3
+Gladys Cooper	3
+Humphrey Bogart	3
+Charles Bickford	3
+Anne Revere	3
+Bing Crosby	3
+Clifton Webb	3
+Angela Lansbury	3
+Joan Crawford	3
+Celeste Holm	3
+José Ferrer	3
+Kirk Douglas	3
+William Holden	3
+Eleanor Parker	3
+Peter Ustinov	3
+Gig Young	3
+Jack Palance	3
+James Mason	3
+Rod Steiger	3
+Natalie Wood	3
+Maximilian Schell	3
+Piper Laurie	3
+Marcello Mastroianni	3
+Melvyn Douglas	3
+Dame Edith Evans	3
+Julie Andrews	3
+Walter Matthau	3
+Faye Dunaway	3
+Diane Ladd	3
+Jason Robards	3
+Sally Field	3
+Joe Pesci	3
+Debra Winger	3
+Anjelica Huston	3
+Sigourney Weaver	3
+Dianne Wiest	3
+Martin Landau	3
+Michelle Pfeiffer	3
+Tom Cruise	3
+Nick Nolte	3
+Laura Dern	3
+Robert Downey Jr.	3
+Marisa Tomei	3
+Ralph Fiennes	3
+Joan Allen	3
+Woody Harrelson	3
+Edward Norton	3
+Matt Damon	3
+Russell Crowe	3
+Laura Linney	3
+Will Smith	3
+Ethan Hawke	3
+Johnny Depp	3
+Charlize Theron	3
+Natalie Portman	3
+Ryan Gosling	3
+Viggo Mortensen	3
+Christopher Plummer	3
+Carey Mulligan	3
+Gary Oldman	3
+Jessica Chastain	3
+Octavia Spencer	3
+Timothée Chalamet	3
+Olivia Colman	3
+Janet Gaynor	2
+Ruth Chatterton	2
+George Arliss	2
+Wallace Beery	2
+Marie Dressler	2
+Helen Hayes	2
+Leslie Howard	2
+Frank Morgan	2
+Victor McLaglen	2
+Basil Rathbone	2
+Akim Tamiroff	2
+Luise Rainer	2
+Beulah Bondi	2
+Alice Brady	2
+Maria Ouspenskaya	2
+Gale Sondergaard	2
+Robert Montgomery	2
+Thomas Mitchell	2
+Dame May Whitty	2
+Robert Donat	2
+John Garfield	2
+Vivien Leigh	2
+Henry Fonda	2
+Marjorie Rambeau	2
+Cary Grant	2
+Walter Pidgeon	2
+Monty Woolley	2
+J. Carrol Naish	2
+Barry Fitzgerald	2
+Anne Baxter	2
+Edmund Gwenn	2
+Loretta Young	2
+Gloria Grahame	2
+Cecil Kellaway	2
+Jean Simmons	2
+John Wayne	2
+Ralph Richardson	2
+James Whitmore	2
+Elsa Lanchester	2
+Mercedes McCambridge	2
+Karl Malden	2
+Mildred Dunnock	2
+Eddie Albert	2
+Frank Sinatra	2
+Leslie Caron	2
+Grace Kelly	2
+Lee J. Cobb	2
+Edmond O'Brien	2
+Judy Garland	2
+James Dean	2
+Sal Mineo	2
+Arthur O'Connell	2
+Anna Magnani	2
+Eileen Heckart	2
+Sidney Poitier	2
+Hugh Griffith	2
+Simone Signoret	2
+Peter Falk	2
+Shirley Knight	2
+Sophia Loren	2
+Richard Harris	2
+Rex Harrison	2
+Patricia Neal	2
+Joyce Redman	2
+Peter Sellers	2
+John Gielgud	2
+Kim Stanley	2
+Tom Courtenay	2
+Ruth Gordon	2
+Paul Scofield	2
+Lynn Redgrave	2
+Estelle Parsons	2
+Barbra Streisand	2
+Liza Minnelli	2
+Dyan Cannon	2
+Goldie Hawn	2
+Sylvia Miles	2
+Peter Finch	2
+Roy Scheider	2
+Ann-Margret	2
+Liv Ullmann	2
+Vincent Gardenia	2
+Madeline Kahn	2
+Gena Rowlands	2
+Talia Shire	2
+Burgess Meredith	2
+Jack Warden	2
+Isabelle Adjani	2
+Sylvester Stallone	2
+Richard Dreyfuss	2
+John Travolta	2
+Melinda Dillon	2
+Bruce Dern	2
+Richard Farnsworth	2
+John Hurt	2
+Christopher Walken	2
+Jill Clayburgh	2
+Bette Midler	2
+Judd Hirsch	2
+Charles Durning	2
+John Lithgow	2
+Julie Walters	2
+Cher	2
+John Malkovich	2
+Judy Davis	2
+Whoopi Goldberg	2
+James Woods	2
+Max von Sydow	2
+Joan Cusack	2
+Geena Davis	2
+Kenneth Branagh	2
+Jessica Tandy	2
+Mary McDonnell	2
+Clint Eastwood	2
+Miranda Richardson	2
+Angela Bassett	2
+Winona Ryder	2
+Nicolas Cage	2
+Kevin Spacey	2
+Billy Bob Thornton	2
+Brenda Blethyn	2
+Emily Watson	2
+Juliette Binoche	2
+Helena Bonham Carter	2
+Helen Hunt	2
+Ian McKellen	2
+Jude Law	2
+Janet McTeer	2
+Hilary Swank	2
+Angelina Jolie	2
+Catherine Keener	2
+Samantha Morton	2
+Benicio Del Toro	2
+Marcia Gay Harden	2
+Kate Hudson	2
+Tom Wilkinson	2
+Adrien Brody	2
+Djimon Hounsou	2
+Naomi Watts	2
+Jamie Foxx	2
+Heath Ledger	2
+Paul Giamatti	2
+Keira Knightley	2
+Reese Witherspoon	2
+Rachel Weisz	2
+Casey Affleck	2
+Marion Cotillard	2
+Richard Jenkins	2
+Michael Shannon	2
+Anne Hathaway	2
+Melissa Leo	2
+Colin Firth	2
+Jeremy Renner	2
+Christoph Waltz	2
+Sandra Bullock	2
+Jacki Weaver	2
+Jonah Hill	2
+Rooney Mara	2
+Melissa McCarthy	2
+Michael Fassbender	2
+Sally Hawkins	2
+Benedict Cumberbatch	2
+Eddie Redmayne	2
+J.K. Simmons	2
+Andrew Garfield	2
+Mahershala Ali	2
+Daniel Kaluuya	2
+Sam Rockwell	2
+Margot Robbie	2
+Adam Driver	2
+Cynthia Erivo	2
+Scarlett Johansson	2
+Jessie Buckley	2
+Colman Domingo	2
+```
 
 ```sql
+select nome_indicado, COUNT(*) as numero_de_indicações
+from indicados_ao_oscar
+where categoria like '%actor%' or categoria like '%actress%'
+group by nome_indicado
+having COUNT(*) > 1
+order by numero_de_indicações desc;
 ```
 
 **5.2** Qual ator ou atriz tem o maior número de indicações na história do Oscar?
 
-R:
+R: A Meryl Streep	com 21 indicações.
 
 ```sql
+select nome_indicado, COUNT(*) as numero_de_indicações
+from indicados_ao_oscar
+where categoria like '%actor%' or categoria like '%actress%'
+group by nome_indicado
+having COUNT(*) > 1
+order by numero_de_indicações desc
+limit 1;
 ```
 
 **5.3** Quais atores foram indicados mais de 3 vezes, mas nunca ganharam?
 
 R:
+```
+Nome indicado / Numero de Indicações
+Peter O'Toole	8
+Glenn Close	8
+Richard Burton	7
+Deborah Kerr	6
+Thelma Ritter	6
+Amy Adams	6
+Irene Dunne	5
+Arthur Kennedy	5
+Albert Finney	5
+Annette Bening	5
+Michelle Williams	5
+Bradley Cooper	5
+Charles Boyer	4
+Barbara Stanwyck	4
+Mickey Rooney	4
+Claude Rains	4
+Rosalind Russell	4
+Agnes Moorehead	4
+Montgomery Clift	4
+Warren Beatty	4
+Jane Alexander	4
+Marsha Mason	4
+Willem Dafoe	4
+Ed Harris	4
+Saoirse Ronan	4
+Mark Ruffalo	4
+```
 
 ```sql
+select nome_indicado, COUNT(*) as numero_de_indicações
+from indicados_ao_oscar
+where (categoria like '%actor%' or categoria like '%actress%')
+and nome_indicado not in(
+select nome_indicado
+from indicados_ao_oscar
+where (categoria like '%actor%' or categoria like '%actress%')
+and vencedor = true)
+group by nome_indicado
+having COUNT(*) > 3
+order by numero_de_indicações desc;
 ```
 
 **5.4** Encontre todos os artistas que foram indicados em categorias diferentes (ex: ator e diretor).
