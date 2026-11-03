@@ -1276,22 +1276,694 @@ order by numero_de_indicações desc;
 **5.4** Encontre todos os artistas que foram indicados em categorias diferentes (ex: ator e diretor).
 
 R:
+```
+nome indicado /  quantidades      /   categorias
+Metro-Goldwyn-Mayer	11	BEST MOTION PICTURE, DOCUMENTARY (Short Subject), OUTSTANDING MOTION PICTURE, OUTSTANDING PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Cartoon), SHORT SUBJECT (Novelty), SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel), SPECIAL EFFECTS, UNIQUE AND A...
+Warner Bros.	10	BEST MOTION PICTURE, DOCUMENTARY (Short Subject), OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Cartoon), SHORT SUBJECT (Color), SHORT SUBJECT (Comedy), SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel), SPECIAL AWARD
+Paramount	8	BEST MOTION PICTURE, DOCUMENTARY (Short Subject), OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Cartoon), SHORT SUBJECT (Color), SHORT SUBJECT (One-reel), SPECIAL EFFECTS
+Alex North	7	HONORARY AWARD, MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original), MUSIC (Original Dramatic Score), MUSIC (Original Music Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original...
+RKO Radio	7	BEST MOTION PICTURE, DOCUMENTARY (Short Subject), OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Comedy), SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel)
+Alfred Newman	6	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Music Score--substantially original), MUSIC (Original Score), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Walt Disney, Producer	6	DOCUMENTARY, DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon), SHORT SUBJECT (Live Action), SHORT SUBJECT (Two-reel)
+20th Century-Fox	5	BEST MOTION PICTURE, OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Cartoon), SHORT SUBJECT (One-reel)
+Elmer Bernstein	5	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original), MUSIC (Original Music Score), MUSIC (Original Score), MUSIC (Scoring of Music--adaptation or treatment)
+Franz Waxman	5	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Music Score--substantially original), MUSIC (Original Score), MUSIC (Scoring)
+Ingmar Bergman	5	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD, WRITING (Screenplay Written Directly for the Screen), WRITING (Story and Screenplay--based on factual material or material not previously published or produced), WRITING (Story and Screenplay--written directl...
+Jerry Goldsmith	5	MUSIC (Music Score--substantially original), MUSIC (Original Dramatic Score), MUSIC (Original Music Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score)
+John Williams	5	MUSIC (Original Dramatic Score), MUSIC (Original Musical or Comedy Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score), MUSIC (Scoring of Music--adaptation or treatment)
+National Film Board of Canada	5	DOCUMENTARY, DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon), SHORT SUBJECT (Live Action), SHORT SUBJECT (One-reel)
+Paul Newman	5	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, HONORARY AWARD, JEAN HERSHOLT HUMANITARIAN AWARD
+Robert Benton	5	DIRECTING, WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Based on Material Previously Produced or Published), WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previo...
+Victor Young	5	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Carl Foreman	4	WRITING (Screenplay--based on material from another medium), WRITING (Screenplay), WRITING (Story and Screenplay--based on factual material or material not previously published or produced), WRITING (Story and Screenplay)
+Columbia	4	BEST MOTION PICTURE, OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION, SHORT SUBJECT (Cartoon)
+George Seaton	4	DIRECTING, JEAN HERSHOLT HUMANITARIAN AWARD, WRITING (Screenplay--based on material from another medium), WRITING (Screenplay)
+Herbert Stothart	4	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Original Score), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+John Barry	4	MUSIC (Original Dramatic Score), MUSIC (Original Music Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score)
+Kenneth Branagh	4	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, DIRECTING, WRITING (Screenplay Based on Material Previously Produced or Published)
+Lalo Schifrin	4	HONORARY AWARD, MUSIC (Original Music Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score)
+Laurence Olivier	4	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, DIRECTING
+Max Steiner	4	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score), MUSIC (Scoring)
+Neil Simon	4	WRITING (Screenplay Adapted from Other Material), WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced), WRITI...
+Paddy Chayefsky	4	WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced), WRITING (Screenplay), WRITING (Story and Screenplay--based on factual material or material not previously published...
+Piero Gherardi	4	ART DIRECTION (Black-and-White), ART DIRECTION (Color), COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Stanley Kubrick	4	DIRECTING, SPECIAL VISUAL EFFECTS, WRITING (Screenplay Adapted from Other Material), WRITING (Screenplay--based on material from another medium)
+Warren Beatty	4	ACTOR, ACTOR IN A LEADING ROLE, DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+William Rose	4	WRITING (Screenplay--based on material from another medium), WRITING (Screenplay--Original), WRITING (Story and Screenplay--written directly for the screen), WRITING (Story and Screenplay)
+Aaron Copland	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Original Score), MUSIC (Scoring)
+Al Pacino	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Albert Finney	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Alec Guinness	3	ACTOR, ACTOR IN A SUPPORTING ROLE, WRITING (Screenplay--based on material from another medium)
+Alfred Newman, Ken Darby	3	MUSIC (Music Score--substantially original), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Andre Previn	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Angelina Jolie	3	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE, JEAN HERSHOLT HUMANITARIAN AWARD
+Anthony Collins	3	MUSIC (Original Score), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Ben Hecht	3	WRITING (Adaptation), WRITING (Original Screenplay), WRITING (Original Story)
+Ben Sharpsteen, Producer	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Bernard Herrmann	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Bill Thomas	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Billy Bob Thornton	3	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, WRITING (Screenplay Based on Material Previously Produced or Published)
+British Ministry of Information	3	DOCUMENTARY, DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Cecil B. DeMille	3	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD, SPECIAL AWARD
+Charles Chaplin	3	ACTOR, SPECIAL AWARD, WRITING (Original Screenplay)
+Charles LeMaire, Mary Wills	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Clint Eastwood	3	ACTOR IN A LEADING ROLE, DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Conrad Hall	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Daniel L. Fapp	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Danny Elfman	3	MUSIC (Original Dramatic Score), MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+David Lean	3	DIRECTING, FILM EDITING, WRITING (Screenplay Based on Material from Another Medium)
+Dimitri Tiomkin	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original), MUSIC (Scoring)
+Dore Schary, Producer	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+Dorothy Jeakins	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Edgar Anstey, Producer	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Edith Head	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Edward Cronjager	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Edward Kay	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Scoring of a Musical Picture)
+Ellen Burstyn	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Emma Stone	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Emma Thompson	3	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE, WRITING (Screenplay Based on Material Previously Produced or Published)
+Ernest Gold	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original), MUSIC (Original Score--for a motion picture [not a musical])
+Ernest Haller	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Ernest Laszlo	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Ernest Lehman	3	HONORARY AWARD, WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay--written directly for the screen)
+Fox	3	OUTSTANDING PICTURE, OUTSTANDING PRODUCTION, UNIQUE AND ARTISTIC PICTURE
+Francis Ford Coppola	3	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD, WRITING (Original Screenplay)
+Frank Sinatra	3	ACTOR, ACTOR IN A SUPPORTING ROLE, JEAN HERSHOLT HUMANITARIAN AWARD
+Frank Skinner	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Frederic Ullman, Jr., Producer	3	DOCUMENTARY, DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+Geena Davis	3	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE, JEAN HERSHOLT HUMANITARIAN AWARD
+Gena Rowlands	3	ACTRESS, ACTRESS IN A LEADING ROLE, HONORARY AWARD
+Gene Hackman	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+George Barnes	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+George Clooney	3	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, DIRECTING
+George Folsey	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+George Lucas	3	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD, WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)
+George Stevens	3	DIRECTING, HONORARY AWARD, IRVING G. THALBERG MEMORIAL AWARD
+Georges Delerue	3	MUSIC (Original Dramatic Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score)
+Geraldine Page	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Gordon Hollingshead, Producer	3	DOCUMENTARY (Short Subject), SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel)
+Hans Zimmer	3	MUSIC (Original Dramatic Score), MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+Harry Stradling	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Henry Fonda	3	ACTOR, ACTOR IN A LEADING ROLE, HONORARY AWARD
+Henry Mancini	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original), MUSIC (Original Score)
+Horton Foote	3	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Written Directly for the Screen), WRITING (Screenplay--based on material from another medium)
+Ingrid Bergman	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Irene Sharaff	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Jack Cardiff	3	CINEMATOGRAPHY (Color), DIRECTING, HONORARY AWARD
+Jack Lemmon	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jack Nicholson	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+James Carr, Producer	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+James L. Brooks	3	DIRECTING, WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Written Directly for the Screen)
+James Wong Howe	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Jane Alexander	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jane Fonda	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jean Louis	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Jerry Fielding	3	MUSIC (Original Dramatic Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Original Score)
+John Cassavetes	3	ACTOR IN A SUPPORTING ROLE, DIRECTING, WRITING (Story and Screenplay--written directly for the screen)
+John Huston	3	ACTOR IN A SUPPORTING ROLE, DIRECTING, WRITING (Screenplay)
+Jon Voight	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Joseph L. Mankiewicz	3	DIRECTING, WRITING (Screenplay), WRITING (Story and Screenplay)
+Joseph Ruttenberg	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Joseph Walker	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Lamar Trotti	3	WRITING (Motion Picture Story), WRITING (Original Screenplay), WRITING (Original Story)
+Larry Lansburgh, Producer	3	DOCUMENTARY (Feature), SHORT SUBJECT (Live Action), SHORT SUBJECT (Two-reel)
+Leigh Harline	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Leo McCarey	3	DIRECTING, WRITING (Motion Picture Story), WRITING (Original Motion Picture Story)
+Leon Shamroy	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Leonardo DiCaprio	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Lina Wertmüller	3	DIRECTING, HONORARY AWARD, WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)
+Louis Malle	3	DIRECTING, WRITING (Screenplay Written Directly for the Screen), WRITING (Story and Screenplay--based on factual material or material not previously published or produced)
+Marshall Curry	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT FILM (Live Action)
+Maurice Jarre	3	MUSIC (Music Score--substantially original), MUSIC (Original Score), MUSIC (Scoring of Music--adaptation or treatment)
+Michael Caine	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Michel Legrand	3	MUSIC (Original Dramatic Score), MUSIC (Original Score--for a motion picture [not a musical]), MUSIC (Scoring of Music--adaptation or treatment)
+Mickey Rooney	3	ACTOR, ACTOR IN A SUPPORTING ROLE, HONORARY AWARD
+Miklos Rozsa	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Milton Krasner	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Music and Lyrics by Al Kasha and Joel Hirschhorn	3	MUSIC (Original Song), MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music and Lyrics by Richard M. Sherman and Robert B. Sherman	3	MUSIC (Original Song), MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music by Henry Mancini; Lyrics by Johnny Mercer	3	MUSIC (Original Song Score), MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music by Sammy Fain; Lyrics by Paul Francis Webster	3	MUSIC (Original Song), MUSIC (Song--Original for the Picture), MUSIC (Song)
+Norman McLaren, Producer	3	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action), SHORT SUBJECT (One-reel)
+Norman Panama, Melvin Frank	3	WRITING (Original Screenplay), WRITING (Story and Screenplay--written directly for the screen), WRITING (Story and Screenplay)
+Oliver Stone	3	DIRECTING, WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Written Directly for the Screen)
+Orry-Kelly	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Otto Lang, Producer	3	DOCUMENTARY (Short Subject), SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel)
+Paramount Famous Lasky	3	OUTSTANDING PICTURE, OUTSTANDING PRODUCTION, UNIQUE AND ARTISTIC PICTURE
+Pete Smith, Producer	3	SHORT SUBJECT (Color), SHORT SUBJECT (Novelty), SHORT SUBJECT (One-reel)
+Quincy Jones	3	JEAN HERSHOLT HUMANITARIAN AWARD, MUSIC (Adaptation Score), MUSIC (Original Music Score)
+Ralph Fiennes	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Randy Newman	3	MUSIC (Original Dramatic Score), MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+Richard Brooks	3	DIRECTING, WRITING (Screenplay--based on material from another medium), WRITING (Screenplay)
+Richard Burton	3	ACTOR, ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Richard Hageman	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Robert Surtees	3	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Robert Wise	3	DIRECTING, FILM EDITING, IRVING G. THALBERG MEMORIAL AWARD
+Samuel Goldwyn Productions	3	BEST MOTION PICTURE, OUTSTANDING MOTION PICTURE, OUTSTANDING PRODUCTION
+Spike Lee	3	DIRECTING, HONORARY AWARD, WRITING (Screenplay Written Directly for the Screen)
+Sylvester Stallone	3	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE, WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced)
+Tom Daly, Producer	3	DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon), SHORT SUBJECT (Live Action)
+United States Army	3	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+United States Army Air Force	3	DOCUMENTARY, DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+United States Navy	3	DOCUMENTARY, DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Vanessa Redgrave	3	ACTRESS, ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Walter Plunkett	3	COSTUME DESIGN, COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Werner Heymann	3	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Woody Allen	3	ACTOR IN A LEADING ROLE, DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+20th Century-Fox Studio Sound Department, Carl Faulkner, Sound Director	2	SOUND, SOUND RECORDING
+Adam Driver	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Adaptation Score by Leonard Rosenman	2	MUSIC (Original Song Score and Its Adaptation or Adaptation Score), MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)
+Adaptation score by Nelson Riddle	2	MUSIC (Score of a Musical Picture--original or adaptation), MUSIC (Scoring: Original Song Score and Adaptation -or- Scoring: Adaptation)
+Adaptation Score by Ralph Burns	2	MUSIC (Original Song Score and Its Adaptation -or- Adaptation Score), MUSIC (Scoring: Adaptation and Original Song Score)
+Adrien Brody	2	ACTOR, ACTOR IN A LEADING ROLE
+Alan Arkin	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Alan J. Pakula	2	DIRECTING, WRITING (Screenplay Based on Material from Another Medium)
+Alan Jay Lerner	2	WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay)
+Alan Robert Murray, Bub Asman	2	SOUND EDITING, SOUND EFFECTS EDITING
+Alfonso Cuarón	2	CINEMATOGRAPHY, DIRECTING
+Alfred Hitchcock	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Alvin Sargent	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay--based on material from another medium)
+Amy Adams	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Angela Bassett	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Angela Lansbury	2	ACTRESS IN A SUPPORTING ROLE, HONORARY AWARD
+Anjelica Huston	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Ann-Margret	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Anne Bancroft	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Anne Baxter	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Anne Hathaway	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Anne V. Coates	2	FILM EDITING, HONORARY AWARD
+Annette Bening	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Anthony Hopkins	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Anthony Minghella	2	DIRECTING, WRITING (Screenplay Based on Material Previously Produced or Published)
+Anthony Quinn	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Anton Grot	2	ART DIRECTION, ART DIRECTION (Black-and-White)
+Argentina	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Arnold Schulman	2	WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay--written directly for the screen)
+Art Direction:  Cedric Gibbons, Paul Groesse;  Set Decoration:  Edwin B. Willis, Jack D. Moore	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Art Direction:  George W. Davis, Edward Carfagno;  Set Decoration:  Henry Grace, Dick Pefferle	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Art Direction:  Hal Pereira, Walter Tyler;  Set Decoration:  Sam Comer, Arthur Krams	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Art Direction:  Lyle R. Wheeler, John DeCuir;  Set Decoration:  Walter M. Scott, Paul S. Fox	2	ART DIRECTION, ART DIRECTION (Color)
+Art Direction:  Lyle Wheeler, John DeCuir;  Set Decoration:  Thomas Little, Paul S. Fox	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Art Direction:  Richard Day, Joseph Wright;  Interior Decoration:  Thomas Little	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Art Direction:  Vincent Korda;  Interior Decoration:  Julia Heron	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Arthur Edeson	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Arthur Hiller	2	DIRECTING, JEAN HERSHOLT HUMANITARIAN AWARD
+Arthur Kennedy	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Arthur Lange	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Arthur Miller	2	CINEMATOGRAPHY (Black-and-White), WRITING (Screenplay Based on Material Previously Produced or Published)
+Artkino	2	DOCUMENTARY, DOCUMENTARY (Short Subject)
+Atom Egoyan	2	DIRECTING, WRITING (Screenplay Based on Material Previously Produced or Published)
+Audrey Hepburn	2	ACTRESS, JEAN HERSHOLT HUMANITARIAN AWARD
+Australian News & Information Bureau	2	DOCUMENTARY, DOCUMENTARY (Short Subject)
+Barry Fitzgerald	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Barry Levinson	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Belgium	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Ben Kingsley	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Ben Proudfoot and Kris Bowers	2	DOCUMENTARY (Short Subject), DOCUMENTARY SHORT FILM
+Bernard Smith, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Bernardo Bertolucci	2	DIRECTING, WRITING (Screenplay--based on material from another medium)
+Bert Glennon	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Bert Haanstra, Producer	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Billy Wilder	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Billy Wilder, I. A. L. Diamond	2	WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay--written directly for the screen)
+Bo Goldman	2	WRITING (Screenplay Based on Material Previously Produced or Published), WRITING (Screenplay Written Directly for the Screen)
+Bob Godfrey, Producer	2	SHORT FILM (Animated), SHORT SUBJECT (Animated)
+Bob Hope	2	JEAN HERSHOLT HUMANITARIAN AWARD, SPECIAL AWARD
+Brad Pitt	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Bradley Cooper	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Brenda Blethyn	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Bronislau Kaper	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original)
+Bruce Dern	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Burnett Guffey	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Burt Lancaster	2	ACTOR, ACTOR IN A LEADING ROLE
+Carmen D'Avino, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon)
+Carson Davidson, Producer	2	SHORT SUBJECT (Live Action), SHORT SUBJECT (One-reel)
+Casey Affleck	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Cate Blanchett	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Cecil Beaton	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Cedric Francis, Producer	2	SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel)
+Cesare Zavattini	2	WRITING (Motion Picture Story), WRITING (Screenplay)
+Charles Guggenheim	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Charles Guggenheim, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Charles Lang	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Charles Lang, Jr.	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Charles LeMaire	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Charles Previn	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Charles Rosher	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+Charlton Heston	2	ACTOR, JEAN HERSHOLT HUMANITARIAN AWARD
+Cher	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Chloé Zhao	2	DIRECTING, FILM EDITING
+Chris Wedge	2	ANIMATED FEATURE FILM, SHORT FILM (Animated)
+Christian Bale	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Christopher Chapman, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Cicely Tyson	2	ACTRESS, HONORARY AWARD
+Claire Wilbur and Robin Lehman, Producers	2	DOCUMENTARY (Short Subject), SHORT FILM (Live Action)
+Clifton Webb	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Colman Domingo	2	ACTOR, ACTOR IN A LEADING ROLE
+Crown Film Unit	2	DOCUMENTARY (Feature), SHORT SUBJECT (One-reel)
+Cy Feuer	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Cynthia Erivo	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Dalton Trumbo	2	WRITING (Motion Picture Story), WRITING (Screenplay)
+Dame Edith Evans	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Daniel Kaluuya	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Danilo Donati	2	COSTUME DESIGN, COSTUME DESIGN (Black-and-White)
+David Lynch	2	DIRECTING, HONORARY AWARD
+Debbie Reynolds	2	ACTRESS, JEAN HERSHOLT HUMANITARIAN AWARD
+Deborah Kerr	2	ACTRESS, HONORARY AWARD
+Denmark	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Denzel Washington	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Donald Brooks	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Dudley Nichols	2	WRITING (Original Screenplay), WRITING (Screenplay)
+Dustin Hoffman	2	ACTOR, ACTOR IN A LEADING ROLE
+Ed Harris	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Edith Head, Gile Steele	2	COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Edmund Reek, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (One-reel)
+Edward Colman	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Edward J. Kay	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Edward Norton	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Edward Selzer, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon)
+Edward Ward	2	MUSIC (Music Score of a Dramatic Picture), MUSIC (Scoring of a Musical Picture)
+Elia Kazan	2	DIRECTING, WRITING (Story and Screenplay--written directly for the screen)
+Elizabeth Taylor	2	ACTRESS, JEAN HERSHOLT HUMANITARIAN AWARD
+Elliot Goldenthal	2	MUSIC (Original Dramatic Score), MUSIC (Original Score)
+Emeric Pressburger	2	WRITING (Motion Picture Story), WRITING (Original Motion Picture Story)
+Emilia Pérez	2	BEST PICTURE, INTERNATIONAL FEATURE FILM
+Erich Wolfgang Korngold	2	MUSIC (Original Score), MUSIC (Scoring)
+Ernest Palmer	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+Ethan Hawke	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Fay Bainter	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Faye Dunaway	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Flow	2	ANIMATED FEATURE FILM, INTERNATIONAL FEATURE FILM
+France	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Frances Goodrich, Albert Hackett	2	WRITING (Adaptation), WRITING (Screenplay)
+Frances Marion	2	WRITING, WRITING (Original Story)
+Frances McDormand	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Frank Borzage	2	DIRECTING, DIRECTING (Dramatic Picture)
+Frank DeVol	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score--substantially original)
+Frank Morgan	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Fred Zinnemann, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Freddie Francis	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Freddie Young	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+Frederick Hollander, Morris Stoloff	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Gabriel Yared	2	MUSIC (Original Dramatic Score), MUSIC (Original Score)
+Geoffrey Rush	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Geoffrey Unsworth	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+George Bruns	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+George C. Scott	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+George J. Folsey	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+George Miller	2	ANIMATED FEATURE FILM, DIRECTING
+George V. Casey, Producer	2	DOCUMENTARY (Short Subject), SHORT FILM (Live Action)
+Germany	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Glenn Close	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Goldie Hawn	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Grace Kelly	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Graham Greene	2	ACTOR IN A SUPPORTING ROLE, WRITING (Screenplay)
+Gregg Toland	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Gregory Peck	2	ACTOR, JEAN HERSHOLT HUMANITARIAN AWARD
+Guy Glover, Producer	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+H. J. Salter	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Hal Ashby	2	DIRECTING, FILM EDITING
+Hal B. Wallis, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Hal Mohr	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Hal Roach, Producer	2	SHORT SUBJECT (Comedy), SHORT SUBJECT (One-reel)
+Hal Rosson	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Hans Dreier, Roland Anderson	2	ART DIRECTION, ART DIRECTION (Color)
+Hans Kraly	2	WRITING, WRITING (Original Story)
+Harry Stradling, Sr.	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Haskell Wexler	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Hayao Miyazaki	2	ANIMATED FEATURE FILM, HONORARY AWARD
+Heath Ledger	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Hein Heckroth	2	ART DIRECTION (Color), COSTUME DESIGN (Color)
+Helen Hayes	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Helen Hunt	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Helen Mirren	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Helen Rose	2	COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Helena Bonham Carter	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Herbert Morgan, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+Herschel Burke Gilbert	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Holly Hunter	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Hong Kong	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Hugo Friedhofer	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring)
+Ian Ferguson, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Ian McKellen	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Irene	2	COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Irving Berlin	2	WRITING (Original Motion Picture Story), WRITING (Original Story)
+Irving Ravetch, Harriet Frank, Jr.	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay--based on material from another medium)
+Irwin Allen, Producer	2	BEST PICTURE, DOCUMENTARY (Feature)
+Isabelle Adjani	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Italy	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Jacques-Yves Cousteau, Producer	2	DOCUMENTARY (Feature), SHORT SUBJECT (Live Action)
+James Basevi	2	ART DIRECTION, ART DIRECTION (Black-and-White)
+James Hill, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+James Horner	2	MUSIC (Original Dramatic Score), MUSIC (Original Score)
+James Mason	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+James Newton Howard	2	MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+James Stewart	2	ACTOR, HONORARY AWARD
+James Whitmore	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+James Woods	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jamie Foxx	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jane Campion	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Janet McTeer	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Japan	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Javier Bardem	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jay Rosenblatt	2	DOCUMENTARY (Short Subject), DOCUMENTARY SHORT FILM
+Jean Simmons	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Jeff Bridges	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jeffrey Katzenberg	2	ANIMATED FEATURE FILM, JEAN HERSHOLT HUMANITARIAN AWARD
+Jennifer Jones	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Jennifer Lawrence	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jeremy Renner	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jessica Chastain	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jessica Lange	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jessica Tandy	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Jessie Buckley	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Joan Allen	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Joan Keller Stern, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Joanne Woodward	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Joaquin Phoenix	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Jodie Foster	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Joe MacDonald	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+John Addison	2	MUSIC (Music Score--substantially original), MUSIC (Original Dramatic Score)
+John Boorman	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+John Garfield	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+John Healy, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+John Hurt	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+John Lasseter	2	ANIMATED FEATURE FILM, SPECIAL ACHIEVEMENT AWARD
+John Michael Hayes	2	WRITING (Screenplay--based on material from another medium), WRITING (Screenplay)
+John Seitz	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+John Singleton	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+John Steinbeck	2	WRITING (Original Motion Picture Story), WRITING (Story and Screenplay)
+John Victor Mackay	2	ART DIRECTION, ART DIRECTION (Black-and-White)
+Johnny Green	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Jonas Poher Rasmussen, Monica Hellström, Signe Byrge Sørensen and Charlotte De La Gournerie	2	ANIMATED FEATURE FILM, DOCUMENTARY (Feature)
+José Ferrer	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Joseph LaShelle	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Joseph Valentine	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Jude Law	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Judi Dench	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Judy Davis	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Judy Garland	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Jules Dassin	2	DIRECTING, WRITING (Story and Screenplay--written directly for the screen)
+Jules White, Producer	2	SHORT SUBJECT (Comedy), SHORT SUBJECT (Two-reel)
+Julia Roberts	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Julianne Moore	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Julie Andrews	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Julie Christie	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Julie Harris	2	ACTRESS, COSTUME DESIGN (Black-and-White)
+Julie Walters	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Juliette Binoche	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Julius J. Epstein	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay--based on material from another medium)
+Karl Freund	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Kate Hudson	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Kate Winslet	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Katharine Hepburn	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Kathy Bates	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Keira Knightley	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Kevin Costner	2	ACTOR IN A LEADING ROLE, DIRECTING
+Kevin Spacey	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Kim Stanley	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+King Vidor	2	DIRECTING, DIRECTING (Dramatic Picture)
+Kirk Douglas	2	ACTOR, HONORARY AWARD
+Kurt Luedtke	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Written Directly for the Screen)
+Laura Dern	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Laura Linney	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Lee Garmes	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Color)
+Leith Stevens	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Lewis Milestone	2	DIRECTING, DIRECTING (Comedy Picture)
+Lillian Hellman	2	WRITING (Original Screenplay), WRITING (Screenplay)
+Lionel Barrymore	2	ACTOR, DIRECTING
+Lionel Lindon	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Liv Ullmann	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Lou Forbes	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring)
+Louis Clyde Stoumen, Producer	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Louis Gruenberg	2	MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Louis Marcus, Producer	2	DOCUMENTARY (Short Subject), SHORT FILM (Live Action)
+Louis Silvers	2	MUSIC (Original Score), MUSIC (Scoring)
+Loyal Griggs	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Luis Enrique Bacalov	2	MUSIC (Original Dramatic Score), MUSIC (Scoring of Music--adaptation or treatment)
+Lyle Wheeler	2	ART DIRECTION, ART DIRECTION (Black-and-White)
+Lynn Redgrave	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+M. Night Shyamalan	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Mack Sennett, Producer	2	SHORT SUBJECT (Comedy), SHORT SUBJECT (Novelty)
+Maggie Smith	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Manuel Arango and Robert Amram, Producers	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Live Action)
+Marc Shaiman	2	MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+Marcello Mastroianni	2	ACTOR, ACTOR IN A LEADING ROLE
+Margaret Furse	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Margot Robbie	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Marik Vos	2	COSTUME DESIGN, COSTUME DESIGN (Black-and-White)
+Marlon Brando	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Marsha Mason	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Martin McDonagh	2	DIRECTING, SHORT FILM (Live Action)
+Marvin Hamlisch	2	MUSIC (Original Dramatic Score), MUSIC (Original Score)
+Marvin Hatley	2	MUSIC (Original Score), MUSIC (Scoring)
+Mary McDonnell	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Mary Wills	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Matt Damon	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Max von Sydow	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Maximilian Schell	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Melissa Leo	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Melissa McCarthy	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Melville Shavelson, Jack Rose	2	WRITING (Story and Screenplay--written directly for the screen), WRITING (Story and Screenplay)
+Melvyn Douglas	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Meredith Willson	2	MUSIC (Music Score of a Dramatic Picture), MUSIC (Original Score)
+Mervyn LeRoy	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Meryl Streep	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Metro-Goldwyn-Mayer Studio Sound Department	2	SOUND, SOUND RECORDING
+Michael Cacoyannis	2	DIRECTING, WRITING (Screenplay--based on material from another medium)
+Michael Fassbender	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Michael Mills, Producer	2	SHORT FILM (Animated), SHORT SUBJECT (Animated)
+Michael Wilson	2	WRITING (Screenplay--Adapted), WRITING (Screenplay)
+Michelle Pfeiffer	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Michelle Williams	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Mike Figgis	2	DIRECTING, WRITING (Screenplay Based on Material Previously Produced or Published)
+Mike Leigh	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Millard Kaufman	2	WRITING (Screenplay), WRITING (Story and Screenplay)
+Miranda Richardson	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Montgomery Clift	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Monty Woolley	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Morgan Freeman	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Morris Stoloff, Ernst Toch	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Music Score of a Dramatic Picture)
+Morris Stoloff, George Duning	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Morris Stoloff, Harry Sukman	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Morton Haack	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Moss Hart	2	WRITING (Original Story), WRITING (Screenplay)
+Music and Lyrics by Leslie Bricusse	2	MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music by Burt Bacharach; Lyrics by Hal David	2	MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music by Elmer Bernstein; Lyrics by Don Black	2	MUSIC (Song--Original for the Picture), MUSIC (Song)
+Music by George Barrie; Lyrics by Sammy Cahn	2	MUSIC (Original Song), MUSIC (Song)
+Music by Marvin Hamlisch; Lyrics by Alan Bergman and Marilyn Bergman	2	MUSIC (Original Song), MUSIC (Song)
+Music by Quincy Jones; Lyrics by Bob Russell	2	MUSIC (Song--Original for the Picture), MUSIC (Song)
+Natalie Portman	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Natalie Wood	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Nedrick Young, Harold Jacob Smith	2	WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay--written directly for the screen)
+Neil Jordan	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Nelson Riddle	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Nick Nolte	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Nicole Kidman	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Norbert Brodine	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Norman Jewison	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Norman Krasna	2	WRITING (Original Screenplay), WRITING (Original Story)
+Norway	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Oliver Wallace	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Olivia Colman	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Olivia de Havilland	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Oprah Winfrey	2	ACTRESS IN A SUPPORTING ROLE, JEAN HERSHOLT HUMANITARIAN AWARD
+Orlando von Einsiedel and Joanna Natasegara	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Orson Welles	2	ACTOR, DIRECTING
+Owen Roizman	2	CINEMATOGRAPHY, HONORARY AWARD
+Paramount Publix	2	OUTSTANDING PRODUCTION, SHORT SUBJECT (Novelty)
+Paramount Studio Sound Department, George Dutton, Sound Director	2	SOUND, SOUND RECORDING
+Paul C. Vogel	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Paul Giamatti	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Paul Osborn	2	WRITING (Screenplay--based on material from another medium), WRITING (Screenplay)
+Paul Scofield	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Paul Thomas Anderson	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Penélope Cruz	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Peter Finch	2	ACTOR, ACTOR IN A LEADING ROLE
+Peter Lord	2	ANIMATED FEATURE FILM, SHORT FILM (Animated)
+Peter O'Toole	2	ACTOR, ACTOR IN A LEADING ROLE
+Peter Sellers	2	ACTOR, ACTOR IN A LEADING ROLE
+Peter Shaffer	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay--based on material from another medium)
+Peter Weir	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Philip Dunne	2	WRITING (Screenplay), WRITING (Story and Screenplay)
+Philip Glass	2	MUSIC (Original Dramatic Score), MUSIC (Original Score)
+Philip Seymour Hoffman	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Philip Yordan	2	WRITING (Motion Picture Story), WRITING (Original Screenplay)
+Phyllis Dalton	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Piero Tosi	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+Pierre Collings, Sheridan Gibney	2	WRITING (Original Story), WRITING (Screenplay)
+Piper Laurie	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Poland	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Production Design: Jess Gonchor; Set Decoration: Nancy Haigh	2	ART DIRECTION, PRODUCTION DESIGN
+Production Design: John Myhre; Set Decoration: Gordon Sim	2	ART DIRECTION, PRODUCTION DESIGN
+Production Design: Sarah Greenwood; Set Decoration: Katie Spencer	2	ART DIRECTION, PRODUCTION DESIGN
+Rachel Portman	2	MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+Ray Heindorf	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring of Music--adaptation or treatment)
+Renée Zellweger	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Richard Day	2	ART DIRECTION, ART DIRECTION (Black-and-White)
+Richard Day, Joseph C. Wright	2	ART DIRECTION (Black-and-White), ART DIRECTION (Color)
+Richard Farnsworth	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Richard Harris	2	ACTOR, ACTOR IN A LEADING ROLE
+Richard Jenkins	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Richard Murphy	2	WRITING (Screenplay), WRITING (Story and Screenplay)
+Richard Rodney Bennett	2	MUSIC (Original Dramatic Score), MUSIC (Original Music Score)
+Richard Schweizer, David Wechsler	2	WRITING (Motion Picture Story), WRITING (Screenplay)
+Robbie Robertson	2	MUSIC (Original Score), SPECIAL VISUAL EFFECTS
+Robert Burks	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Robert De Niro	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Robert Downey Jr.	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Robert Duvall	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Robert Emmett Dolan	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Robert Getchell	2	WRITING (Original Screenplay), WRITING (Screenplay--based on material from another medium)
+Robert Redford	2	ACTOR, DIRECTING
+Robert Riskin	2	WRITING (Adaptation), WRITING (Screenplay)
+Robert Rossen	2	DIRECTING, WRITING (Screenplay)
+Robert Towne	2	WRITING (Original Screenplay), WRITING (Screenplay--based on material from another medium)
+Robert Wise, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Roberto Benigni	2	ACTOR IN A LEADING ROLE, DIRECTING
+Robin Williams	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Rod Steiger	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Roger Edens, Georgie Stoll	2	MUSIC (Scoring of a Musical Picture), MUSIC (Scoring)
+Roman Polanski	2	DIRECTING, WRITING (Screenplay--based on material from another medium)
+Romulus Films	2	BEST MOTION PICTURE, SHORT SUBJECT (Two-reel)
+Rooney Mara	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Rosalind Russell	2	ACTRESS, JEAN HERSHOLT HUMANITARIAN AWARD
+Roy Scheider	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Roy Webb	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Original Score)
+Russell Harlan	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Ruth Gordon, Garson Kanin	2	WRITING (Original Screenplay), WRITING (Story and Screenplay)
+Ruth Prawer Jhabvala	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Based on Material Previously Produced or Published)
+Ryan Gosling	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Sally Field	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Sally Hawkins	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Sam Leavitt	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Sam Spiegel, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Samantha Morton	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Samuel Goldwyn	2	IRVING G. THALBERG MEMORIAL AWARD, JEAN HERSHOLT HUMANITARIAN AWARD
+Samuel Goldwyn Studio Sound Department, Gordon E. Sawyer, Sound Director	2	SOUND, SOUND RECORDING
+Saoirse Ronan	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Saul Bass, Producer	2	DOCUMENTARY (Short Subject), SHORT FILM (Live Action)
+Scarlett Johansson	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Selznick International Pictures	2	BEST MOTION PICTURE, OUTSTANDING PRODUCTION
+Sentimental Value	2	BEST PICTURE, INTERNATIONAL FEATURE FILM
+Shelley Winters	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Shirley MacLaine	2	ACTRESS, ACTRESS IN A LEADING ROLE
+Sidney Buchman	2	WRITING (Screenplay), WRITING (Story and Screenplay)
+Sidney Franklin	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Sidney Howard	2	WRITING (Adaptation), WRITING (Screenplay)
+Sigourney Weaver	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Skibo Productions	2	SHORT SUBJECT (Novelty), SHORT SUBJECT (One-reel)
+Sol Polito	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Sophia Loren	2	ACTRESS, HONORARY AWARD
+Spain	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+Stanley Kramer	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Stanley Kramer, Producer	2	BEST MOTION PICTURE, BEST PICTURE
+Stephen Bosustow, Executive Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon)
+Steve McQueen	2	ACTOR, DIRECTING
+Steven Okazaki, Producer	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+Steven Soderbergh	2	DIRECTING, WRITING (Screenplay Written Directly for the Screen)
+Steven Spielberg	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Steven Zaillian	2	WRITING (Screenplay Based on Material from Another Medium), WRITING (Screenplay Based on Material Previously Produced or Published)
+Sylvain Chomet	2	ANIMATED FEATURE FILM, SHORT FILM (Animated)
+Talia Shire	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Ted McCord	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+Tennessee Williams	2	WRITING (Screenplay--Adapted), WRITING (Screenplay)
+Teresa Wright	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Terrence Malick	2	DIRECTING, WRITING (Screenplay Based on Material Previously Produced or Published)
+The Caddo Company	2	OUTSTANDING PICTURE, OUTSTANDING PRODUCTION
+The March of Time	2	DOCUMENTARY, DOCUMENTARY (Short Subject)
+The Secret Agent	2	BEST PICTURE, INTERNATIONAL FEATURE FILM
+Thomas Mead, Producer	2	SHORT SUBJECT (One-reel), SHORT SUBJECT (Two-reel)
+Thomas Newman	2	MUSIC (Original Musical or Comedy Score), MUSIC (Original Score)
+Tim Robbins	2	ACTOR IN A SUPPORTING ROLE, DIRECTING
+Tim Yip	2	ART DIRECTION, COSTUME DESIGN
+Timothée Chalamet	2	ACTOR, ACTOR IN A LEADING ROLE
+Todd-AO Sound Department, Fred Hynes, Sound Director	2	SOUND, SOUND RECORDING
+Tom Courtenay	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Tom Cruise	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Tom Hanks	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Tom Wilkinson	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Tommy Lee Jones	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Tony Walton	2	COSTUME DESIGN, COSTUME DESIGN (Color)
+United Kingdom	2	FOREIGN LANGUAGE FILM, INTERNATIONAL FEATURE FILM
+United States Army Pictorial Service	2	DOCUMENTARY (Feature), DOCUMENTARY (Short Subject)
+United States Army Signal Corps	2	DOCUMENTARY, DOCUMENTARY (Short Subject)
+Universal	2	OUTSTANDING PRODUCTION, SHORT SUBJECT (Novelty)
+Universal-International Studio Sound Department, Leslie I. Carey, Sound Director	2	SOUND, SOUND RECORDING
+Victor McLaglen	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Victor Milner	2	CINEMATOGRAPHY, CINEMATOGRAPHY (Black-and-White)
+Viola Davis	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Vittorio Nino Novarese	2	COSTUME DESIGN (Black-and-White), COSTUME DESIGN (Color)
+Walt Disney	2	IRVING G. THALBERG MEMORIAL AWARD, SPECIAL AWARD
+Walter Huston	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Walter Matthau	2	ACTOR, ACTOR IN A SUPPORTING ROLE
+Walter Mirisch	2	IRVING G. THALBERG MEMORIAL AWARD, JEAN HERSHOLT HUMANITARIAN AWARD
+Walter Scharf	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Scoring of a Musical Picture)
+Walter Wanger, Producer	2	BEST PICTURE, DOCUMENTARY (Short Subject)
+Ward Kimball, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Cartoon)
+Wendy Hiller	2	ACTRESS, ACTRESS IN A SUPPORTING ROLE
+Werner Janssen	2	MUSIC (Music Score of a Dramatic or Comedy Picture), MUSIC (Original Score)
+Wes Anderson	2	ANIMATED FEATURE FILM, DIRECTING
+Whoopi Goldberg	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Wilbur T. Blume, Producer	2	DOCUMENTARY (Short Subject), SHORT SUBJECT (Two-reel)
+Willem Dafoe	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+William Daniels	2	CINEMATOGRAPHY (Black-and-White), CINEMATOGRAPHY (Color)
+William Goldman	2	WRITING (Screenplay--based on material from another medium), WRITING (Story and Screenplay--based on material not previously published or produced)
+William Holden	2	ACTOR, ACTOR IN A LEADING ROLE
+William Hurt	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+William Wyler	2	DIRECTING, IRVING G. THALBERG MEMORIAL AWARD
+Winona Ryder	2	ACTRESS IN A LEADING ROLE, ACTRESS IN A SUPPORTING ROLE
+Wolfgang Petersen	2	DIRECTING, WRITING (Screenplay Based on Material from Another Medium)
+Woody Allen, Marshall Brickman	2	WRITING (Screenplay Written Directly for the Screen--based on factual material or on story material not previously published or produced), WRITING (Screenplay Written Directly for the Screen)
+Woody Harrelson	2	ACTOR IN A LEADING ROLE, ACTOR IN A SUPPORTING ROLE
+Written by Damien Chazelle	2	WRITING (Adapted Screenplay), WRITING (Original Screenplay)
+Written by Joel Coen & Ethan Coen	2	WRITING (Adapted Screenplay), WRITING (Original Screenplay)
+Written by Kenneth Lonergan	2	WRITING (Original Screenplay), WRITING (Screenplay Written Directly for the Screen)
+Written by Rian Johnson	2	WRITING (Adapted Screenplay), WRITING (Original Screenplay)
+Yoshiro Muraki	2	ART DIRECTION, COSTUME DESIGN (Black-and-White)
+```
 
 ```sql
+select nome_indicado, count(distinct categoria) as quantidade_Categorias , 
+GROUP_CONCAT(DISTINCT categoria ORDER BY categoria SEPARATOR ', ') AS categorias
+FROM indicados_ao_oscar
+GROUP BY nome_indicado
+HAVING COUNT(DISTINCT categoria) > 1
+ORDER BY quantidade_Categorias DESC, nome_indicado ASC;
 ```
 
 **5.5** Quantos indicados têm exatamente 1 indicação na história?
 
-R:
+R: 5627 indicados
 
 ```sql
+SELECT COUNT(*) 
+FROM (
+    SELECT nome_indicado
+    FROM indicados_ao_oscar
+    GROUP BY nome_indicado
+    HAVING COUNT(*) = 1
+) AS indicados_unicos;
 ```
 
 **5.6** Qual o maior números de indicados em um único ano? Essa é uma pergunta franca.
 
 R:
+```
+Ano / Edição / Indicações
+1943	 15	   186
+```
 
 ```sql
+SELECT 
+    ano_cerimonia, 
+    edicao_cerimonia, 
+    COUNT(*) AS total_indicados
+FROM indicados_ao_oscar
+GROUP BY ano_cerimonia, edicao_cerimonia
+ORDER BY total_indicados DESC
+LIMIT 1;
 ```
 
 ---
