@@ -1974,23 +1974,113 @@ LIMIT 1;
 
 **6.1** A série de filmes Toy Story ganhou Oscars em quais anos?
 
+R:
+```
+Toy Story 3	 2011	Ganhou
+Toy Story 3	 2011	Ganhou
+Toy Story 4	 2020	Ganhou
+```
+
+```sql
+select nome_filme, ano_cerimonia, 
+if(vencedor = true,'Ganhou','Perdeu') as vencedor
+from indicados_ao_oscar
+where vencedor = true and nome_filme 
+like '%toy story%';
+```
+
 **6.2** Quantas indicações a franquia Toy Story recebeu no total?
 
+R: 11 Indicações
+
+```sql
+select count(nome_filme)
+from indicados_ao_oscar
+where  nome_filme 
+like '%toy story%';
+```
+
 **6.3** Em quais categorias os filmes Toy Story foram indicados?
+
+R:
+```
+MUSIC (Original Musical or Comedy Score)
+MUSIC (Original Song)
+WRITING (Screenplay Written Directly for the Screen)
+ANIMATED FEATURE FILM
+BEST PICTURE
+SOUND EDITING
+WRITING (Adapted Screenplay)
+```
+
+```sql
+select distinct categoria
+from indicados_ao_oscar
+where  nome_filme 
+like '%toy story%';
+```
 
 ### Crash
 
 **6.4** Em qual edição do Oscar o filme "Crash" concorreu?
 
+R: na edição 78
+
+```sql
+select  edicao_cerimonia
+from indicados_ao_oscar
+where  nome_filme 
+like 'crash';
+```
+
 **6.5** Quantas indicações o filme "Crash" recebeu?
 
+R: 6 indicações
+
+```sql
+select count(nome_filme)
+from indicados_ao_oscar
+where  nome_filme 
+like 'crash';
+```
+
 **6.6** "Crash" ganhou o Oscar de Melhor Filme?
+
+R: Sim ele ganhou:
+```
+Crash	FILM EDITING
+Crash	BEST PICTURE
+Crash	WRITING (Original Screenplay)
+```
+
+```sql
+select nome_filme, categoria
+from indicados_ao_oscar
+where  nome_filme 
+like 'crash' and vencedor = true;
+```
 
 ### Central do Brasil
 
 **6.7** O filme "Central do Brasil" aparece no banco de dados?
 
+R:Sim, porém seu nome esta em inglês Central Station
+
+```sql
+select nome_filme
+from indicados_ao_oscar
+where nome_filme = 'central station';
+```
+
 **6.8** Se sim, quantas indicações "Central do Brasil" recebeu?
+
+R: 2 Indicações
+
+```sql
+select count(nome_filme)
+from indicados_ao_oscar
+where nome_filme = 'central station';
+```
 
 ---
 
@@ -1998,13 +2088,60 @@ LIMIT 1;
 
 **7.1** No campo "vencedor", altere todos os valores "true" (string) para true (booleano) e "false" (string) para false (booleano).
 
+R: foi
+
+```sql
+UPDATE indicados_ao_oscar
+SET vencedor = CASE 
+    WHEN CAST(vencedor AS CHAR) = 'true' THEN 1
+    WHEN CAST(vencedor AS CHAR) = 'false' THEN 0
+    ELSE vencedor 
+END
+WHERE id_registro >= 1;
+```
+
 **7.2** Inclua no banco 3 filmes que nunca foram nomeados ao Oscar, mas que você acha que merecem. Use dados fictícios, mas realistas.
+
+R: No meu caso vou adicionar ganhadores
+
+```sql
+update indicados_ao_oscar
+set vencedor = 1
+where nome_filme like '%Harry Potter%';
+update indicados_ao_oscar
+set vencedor = 1
+where nome_filme like 'Sinners';
+update indicados_ao_oscar
+set vencedor = 1
+where nome_filme like 'Grown Ups';
+```
 
 **7.3** Adicione uma nova categoria chamada "BEST INTERNATIONAL FEATURE FILM" com alguns vencedores recentes (2020-2024).
 
+R:
+
+```sql
+INSERT INTO indicados_ao_oscar(ano_filmagem, ano_cerimonia, edicao_cerimonia, categoria, nome_indicado, nome_filme, vencedor) VALUES 
+(2023, 2024, 96, 'BEST INTERNATIONAL FEATURE FILM', 'The Zone of Interest', 'The Zone of Interest', true),
+(2022, 2023, 95, 'BEST INTERNATIONAL FEATURE FILM', 'All Quiet on the Western Front', 'All Quiet on the Western Front', true),
+(2021, 2022, 94, 'BEST INTERNATIONAL FEATURE FILM', 'Drive My Car', 'Drive My Car', true),
+(2020, 2021, 93, 'BEST INTERNATIONAL FEATURE FILM', 'Another Round', 'Another Round', true),
+(2019, 2020, 92, 'BEST INTERNATIONAL FEATURE FILM', 'Parasite', 'Parasite', true);
+```
+
 **7.4** Corrija possíveis erros de digitação nos nomes dos filmes (ex: espaços extras, caracteres especiais desnecessários).
 
+R:
+
+```sql
+```
+
 **7.5** Remova todos os registros com valor NULL no campo nome_do_filme.
+
+R:
+
+```sql
+```
 
 ---
 
@@ -2012,13 +2149,38 @@ LIMIT 1;
 
 **8.1** Quantas indicações aconteceram por década? Agrupe por década (1920s, 1930s, etc.) e mostre o total.
 
+R:
+
+```sql
+```
+
 **8.2** Em qual década houve o maior número de indicações?
+
+R:
+
+```sql
+```
 
 **8.3** Como o número de categorias evoluiu ao longo dos anos? Mostre quantas categorias únicas existiam a cada década.
 
+R:
+
+```sql
+```
+
 **8.4** Qual foi o ano com o maior número de indicações registradas?
 
+R:
+
+```sql
+```
+
 **8.5** Calcule a taxa de crescimento de indicações comparando a primeira década com a última.
+
+R:
+
+```sql
+```
 
 ---
 
@@ -2028,19 +2190,54 @@ LIMIT 1;
 
 **9.1** Sidney Poitier foi o primeiro ator negro a ser indicado ao Oscar. Em que ano ele foi indicado? Por qual filme?
 
+R:
+
+```sql
+```
+
 **9.2** Sidney Poitier ganhou o Oscar nessa indicação?
+
+R:
+
+```sql
+```
 
 **9.3** Quantos atores/atrizes negros foram indicados na categoria ACTOR ou ACTRESS antes de 1970?
 
+R:
+
+```sql
+```
+
 **9.4** Liste todos os filmes dirigidos por mulheres que ganharam algum Oscar.
+
+R:
+
+```sql
+```
 
 ### Coincidências
 
 **9.5** Denzel Washington e Jamie Foxx já concorreram ao Oscar no mesmo ano?
 
+R:
+
+```sql
+```
+
 **9.6** Se sim, em qual ano e quem ganhou?
 
+R:
+
+```sql
+```
+
 **9.7** Encontre casos onde o mesmo filme ganhou Oscar em múltiplas categorias na mesma cerimônia. Mostre o nome do filme e quantas categorias ele venceu.
+
+R:
+
+```sql
+```
 
 ---
 
