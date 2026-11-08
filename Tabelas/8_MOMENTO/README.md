@@ -46,13 +46,116 @@ Sua missão nesse momento, é explorar os dados.
 
 **1.1** Você acabou de ser contratado pela Momento! Vamos começar incluindo você no sistema, escolha um departamento, cargo e salário.
 
+R:
+
+```sql
+
+  INSERT INTO funcionarios
+  (funcionario_id, primeiro_nome, sobrenome, email, telefone, data_contratacao, cargo_id, salario, moeda_salario, gerente_id, departamento_id, status_funcionario_id)
+VALUES
+  (304, 'Douglas', 'Santos', 'douglas.santos@momento.org', '+1-222-7474', '2026-05-12', 9, 5200.00, 'USD', 103, 6, 1);
+```
+
 **1.2** Agora que você faz parte da equipe, quantos funcionários temos ao total na empresa?
+
+R: tem 124 funcionarios
+
+```sql
+select count(*)
+from funcionarios;
+```
 
 **1.3** Quantos funcionários trabalham especificamente no Departamento de Tecnologia?
 
+R: Tem 14 funcionarios
+
+```sql
+select count(*)
+from funcionarios
+where departamento_id = 13 
+or departamento_id = 6;
+```
+
 **1.4** Liste todos os departamentos que existem na empresa. Quantos são?
 
+R: São 30 departamentos
+```
+departamento_id | Nome | Educacional | Escritorio
+1	Administração Executiva	0	1700
+2	Marketing	0	1800
+3	Recursos Humanos	0	1700
+4	Recursos Humanos	0	2400
+5	Logística	0	1500
+6	Tecnologia da Informação	0	1400
+7	Relações Públicas	0	2700
+8	Vendas	0	2500
+9	Executivo	0	1700
+10	Finanças	0	1700
+11	Contabilidade	0	1700
+12	Biotecnologia	0	3900
+13	Tecnologias Avançadas	0	1900
+14	Dados e Inteligência	0	1400
+15	Experiência do Cliente	0	1800
+16	Operações LATAM	0	2800
+17	Segurança da Informação	0	1500
+18	Pesquisa e Desenvolvimento	0	2400
+19	Comércio Digital	0	2900
+20	Operações APAC	0	3000
+21	Criação de Conteúdo	0	2600
+22	Operações África	0	3100
+23	Poções	1	1300
+24	Transfiguração	1	5100
+25	Projeções Astrais	1	4500
+26	Criaturas Mágicas	1	3200
+27	Biblioteca Arcana	1	5000
+28	Administração Educacional	1	3000
+29	Astronomia	1	2800
+30	Herbologia	1	3800
+			
+```
+
+```sql
+select * 
+from departamentos;
+select count(*) 
+from departamentos;
+```
+
 **1.5** Quantos escritórios a Momento possui? Em quais países?
+
+R: Possui 20 escritorios
+```
+Pais ID | Nome Pais
+AR	Argentina
+BM	Brasil Bruxo
+BR	Brasil
+CA	Canadá
+DE	Alemanha
+FM	França Mágica
+FR	França
+GB	Reino Unido
+GB	Reino Unido
+GB	Reino Unido
+GM	Reino dos Mágos Unidos
+JM	Japão Místico
+JP	Japão
+PE	Peru
+PM	Portugal Bruxo
+US	Estados Unidos
+US	Estados Unidos
+US	Estados Unidos
+WA	Wakanda
+ZA	África do Sul
+```
+
+```sql
+select count(*) 
+from escritorios;
+select escritorios.pais_id, paises.pais_nome
+from escritorios
+inner join paises
+on paises.pais_id = escritorios.pais_id;
+```
 
 ---
 
@@ -62,15 +165,73 @@ O CFO precisa de relatórios urgentes sobre os custos da empresa.
 
 **2.1** Quantos funcionários trabalham no Departamento de Vendas?
 
+R: Trabalham 5 funcionários
+
+```sql
+select count(*)
+from funcionarios
+inner join departamentos
+on departamentos.departamento_id = funcionarios.departamento_id
+where departamento_nome = "Vendas";
+```
+
 **2.2** Qual é o custo total com salários do Departamento de Vendas?
+
+R: O custo total é 59.390,76
+
+```sql
+select sum(salario)
+from funcionarios
+inner join departamentos
+on departamentos.departamento_id = funcionarios.departamento_id
+where departamento_nome = "Vendas";
+```
 
 **2.3** Qual é a média salarial da empresa, excluindo os cargos de CEO, CMO e CFO?
 
+R: A média salarial é 9,735.21.
+
+```sql
+select format(sum(salario) / count(*), 2) as media_salario
+from funcionarios
+inner join cargos
+on cargos.cargo_id = funcionarios.cargo_id
+where cargo_nome not in(
+select cargo_nome
+from cargos
+where cargo_nome = 'CEO' or cargo_nome = 'CFO' or cargo_nome = 'CMO');
+```
+
 **2.4** Qual é a média salarial do Departamento de Tecnologia?
+
+R: A média de salario é 13,203.49.
+
+```sql
+select format(sum(salario) / count(*), 2) as media_salario
+from funcionarios
+inner join departamentos
+on departamentos.departamento_id = funcionarios.departamento_id
+where departamento_nome in(
+select departamento_nome
+from departamentos
+where departamento_nome like '%tecnologia%');
+```
 
 **2.5** Qual departamento possui a maior média salarial?
 
+R:
+
+```sql
+
+```
+
 **2.6** Qual departamento possui o menor número de funcionários?
+
+R:
+
+```sql
+
+```
 
 ---
 
