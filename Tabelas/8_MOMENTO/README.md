@@ -219,18 +219,30 @@ where departamento_nome like '%tecnologia%');
 
 **2.5** Qual departamento possui a maior média salarial?
 
-R:
+R: O departamento Biotecnologia é o que possui a maior média salarial com R$: 29,263.48.
 
 ```sql
-
+select distinct departamentos.departamento_nome , format(avg(funcionarios.salario), 2) as media_salario
+from departamentos
+inner join funcionarios
+on departamentos.departamento_id = funcionarios.departamento_id
+group by departamentos.departamento_id, departamentos.departamento_nome
+order by cast(media_salario as decimal) desc
+limit 1;
 ```
 
 **2.6** Qual departamento possui o menor número de funcionários?
 
-R:
+R: Os três departamentos com o menor numero de funcionario são: Administração Executiva, Contabilidade e
+Recursos Humanos.
 
 ```sql
-
+select distinct departamentos.departamento_nome , count(funcionarios.funcionario_id) as numero_funcionario
+from departamentos
+inner join funcionarios
+on departamentos.departamento_id = funcionarios.departamento_id
+group by departamentos.departamento_id, departamentos.departamento_nome
+order by numero_funcionario desc;
 ```
 
 ---
