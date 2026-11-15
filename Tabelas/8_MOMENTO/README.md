@@ -704,71 +704,648 @@ Agora a história acompanha pessoas. A Momento quer entender se sua escola está
 
 Quais cursos estão ativos? Para cada um, mostre carga horária, nível e quantas turmas já foram abertas. Que jornada de aprendizagem a escola oferece hoje?
 
+R:
+```
+Curso | Carga Hr | Nivel | Turmas Abertas
+Tecnologia Criativa	80	INTRODUTORIO	1
+Narrativas e Cultura Pop	60	INTERMEDIARIO	1
+Laboratório de Dados	100	AVANCADO	1
+```
+
+```sql
+SELECT 
+    c.curso_nome,
+    c.carga_horaria,
+    nc.nome AS nivel_curso,
+    COUNT(t.turma_id) AS total_turmas_abertas
+FROM cursos c
+INNER JOIN niveis_curso nc ON c.nivel_curso_id = nc.nivel_curso_id
+LEFT JOIN turmas t ON c.curso_id = t.curso_id
+WHERE c.ativo = 1
+GROUP BY c.curso_id, c.curso_nome, c.carga_horaria, nc.nome;
+```
+
 **7.2 — Quem chegou até aqui?**
 
 Para cada turma, mostre curso, professores, capacidade e número de matrículas. Há vagas disponíveis ou turmas ainda sem estudantes? O que isso sugere sobre oferta e procura?
+
+R: Faltam bastante vagas a serem preenchidas, sugere uma melhor divulgação do curso
+```
+TEC-2025-01	Tecnologia Criativa	Filius Flitwick	30	2	28
+NAR-2025-01	Narrativas e Cultura Pop	Ninfadora Tonks	25	1	24
+DAD-2025-01	Laboratório de Dados	Fleur Dascores	20	1	19
+```
+
+```sql
+SELECT 
+    t.codigo AS turma_codigo,
+    c.curso_nome,
+    CONCAT(f.primeiro_nome, ' ', f.sobrenome) AS professor,
+    t.capacidade,
+    COUNT(m.matricula_id) AS total_matriculas,
+    (t.capacidade - COUNT(m.matricula_id)) AS vagas_disponiveis
+FROM turmas t
+INNER JOIN cursos c ON t.curso_id = c.curso_id
+INNER JOIN funcionarios f ON t.professor_funcionario_id = f.funcionario_id
+LEFT JOIN matriculas m ON t.turma_id = m.turma_id
+GROUP BY t.turma_id, t.codigo, c.curso_nome, professor, t.capacidade;
+```
 
 **7.3 — Acesso à formação**
 
 Quantos estudantes receberam bolsa, qual foi o percentual concedido e em quais cursos? 
 
+R:
+```
+Curso | Porcentual desconto | Estudantes bolsistas
+Narrativas e Cultura Pop	50.00	1
+Tecnologia Criativa	100.00	1
+```
+
+```sql
+SELECT 
+    c.curso_nome,
+    b.percentual_desconto,
+    COUNT(b.aluno_id) AS total_estudantes_bolsistas
+FROM bolsas b
+INNER JOIN cursos c ON b.curso_id = c.curso_id
+GROUP BY c.curso_nome, b.percentual_desconto;
+```
+
 **7.4 — Conclusão e reconhecimento**
 
 Por curso e turma, calcule matrículas, concluintes, certificados emitidos e nota média. Quais perguntas adicionais seriam necessárias antes de afirmar que um curso teve “mais sucesso” que outro?
+
+R:Se o curso já foi finalizado.
+```
+Curso | Codigo | Matriculas | Conclusão | Certificados | Média 
+Laboratório de Dados	DAD-2025-01	1	0	0	
+Narrativas e Cultura Pop	NAR-2025-01	1	0	0	
+Tecnologia Criativa	TEC-2025-01	2	2	2	88.75
+```
+
+```sql
+SELECT 
+    c.curso_nome,
+    t.codigo AS turma_codigo,
+    COUNT(m.matricula_id) AS total_matriculas,
+    SUM(CASE WHEN sm.nome = 'CONCLUIDA' THEN 1 ELSE 0 END) AS total_concluintes,
+    SUM(CASE WHEN m.certificado_emitido = 1 THEN 1 ELSE 0 END) AS total_certificados,
+    ROUND(AVG(m.nota_final), 2) AS nota_media
+FROM turmas t
+INNER JOIN cursos c ON t.curso_id = c.curso_id
+LEFT JOIN matriculas m ON t.turma_id = m.turma_id
+LEFT JOIN status_matricula sm ON m.status_matricula_id = sm.status_matricula_id
+GROUP BY c.curso_nome, t.turma_id, t.codigo;
+```
 
 **7.5 — O próximo capítulo de Ariel**
 
 Reconstrua a trajetória de Ariel Nunes: curso, turma, matrícula, bolsa, estágio e contratação. Em que momento a formação passou a se conectar com uma oportunidade corporativa?
 
+R:Quando ele encerrou o curso.
+```
+Ariel Nunes	Tecnologia Criativa	TEC-2025-01	2025-01-15	100.00	ESTAGIO	2025-05-05	2025-05-11	ENCERRADO	Tecnologia da Informação
+Ariel Nunes	Tecnologia Criativa	TEC-2025-01	2025-01-15	100.00	CONTRATACAO	2025-05-12		ATIVO	Tecnologia da Informação
+```
+
+```sql
+SELECT 
+    a.nome AS aluno,
+    c.curso_nome,
+    t.codigo AS turma_codigo,
+    m.data_matricula,
+    b.percentual_desconto AS bolsa_percentual,
+    tv.nome AS tipo_vinculo,
+    v.data_inicio,
+    v.data_fim,
+    sv.nome AS status_vinculo,
+    d.departamento_nome
+FROM alunos a
+INNER JOIN matriculas m ON a.aluno_id = m.aluno_id
+INNER JOIN turmas t ON m.turma_id = t.turma_id
+INNER JOIN cursos c ON t.curso_id = c.curso_id
+LEFT JOIN bolsas b ON a.aluno_id = b.aluno_id AND c.curso_id = b.curso_id
+LEFT JOIN vinculos_talentos v ON a.aluno_id = v.aluno_id
+LEFT JOIN tipos_vinculo tv ON v.tipo_vinculo_id = tv.tipo_vinculo_id
+LEFT JOIN status_vinculo sv ON v.status_vinculo_id = sv.status_vinculo_id
+LEFT JOIN departamentos d ON v.departamento_id = d.departamento_id
+WHERE a.nome = 'Ariel Nunes';
+```
+
 **7.6 — Da aprendizagem para o trabalho**
 
 Liste os vínculos de talentos com estudante, tipo de vínculo, departamento, status e, quando existir, a pessoa funcionária associada. Quantas pessoas passaram por estágio e quantas chegaram à contratação?
+
+R: Apenas a Ariel Nunes
+
+```sql
+SELECT 
+    a.nome AS estudante,
+    tv.nome AS tipo_vinculo,
+    d.departamento_nome,
+    sv.nome AS status_vinculo,
+    CONCAT(f.primeiro_nome, ' ', f.sobrenome) AS funcionario_associado
+FROM vinculos_talentos v
+INNER JOIN alunos a ON a.aluno_id = v.aluno_id
+INNER JOIN tipos_vinculo tv ON v.tipo_vinculo_id = tv.tipo_vinculo_id
+INNER JOIN departamentos d ON v.departamento_id = d.departamento_id
+INNER JOIN status_vinculo sv ON v.status_vinculo_id = sv.status_vinculo_id
+LEFT JOIN funcionarios f ON v.funcionario_id = f.funcionario_id;
+```
 
 **7.7 — Onde a ponte encontra a empresa?**
 
 Quais departamentos recebem talentos da escola? Compare-os com seu total de funcionários e média salarial. Como evitar a conclusão apressada de que um departamento é “melhor” apenas porque contratou mais estudantes?
 
+R: O departamento: Tecnologia da Informação, Quantidades de alunos:	1, Total de funcionarios: 6 e Média salarial: 8855.87
+
+```sql
+SELECT 
+    d.departamento_nome,
+    COUNT(DISTINCT v.aluno_id) AS talentos_recebidos,
+    COUNT(DISTINCT f.funcionario_id) AS total_funcionarios,
+    ROUND(AVG(f.salario), 2) AS media_salarial_depto
+FROM departamentos d
+INNER JOIN vinculos_talentos v ON d.departamento_id = v.departamento_id
+LEFT JOIN funcionarios f ON d.departamento_id = f.departamento_id
+GROUP BY d.departamento_id, d.departamento_nome;
+```
+
 **7.8 — Um retrato para a liderança**
 
 Crie uma única consulta que apresente: total de alunos, matrículas ativas, concluintes, bolsas concedidas, estágios, contratações e departamentos que receberam talentos. Escreva, abaixo do resultado, um parágrafo de até cinco linhas explicando o que a liderança pode aprender — e o que ainda não é possível afirmar.
+
+R: Total Alunos: 4,	Matriculas Ativas: 2, Concluientes: 2, bolsas concedidas: 2, estagios: 1, Contratações:	1 e Departamentos beneficiados: 1.
+
+```sql
+SELECT 
+    (SELECT COUNT(*) FROM alunos) AS total_alunos,
+    (SELECT COUNT(*) FROM matriculas m INNER JOIN status_matricula sm ON m.status_matricula_id = sm.status_matricula_id WHERE sm.nome = 'ATIVA') AS matriculas_ativas,
+    (SELECT COUNT(*) FROM matriculas m INNER JOIN status_matricula sm ON m.status_matricula_id = sm.status_matricula_id WHERE sm.nome = 'CONCLUIDA') AS concluintes,
+    (SELECT COUNT(*) FROM bolsas) AS bolsas_concedidas,
+    (SELECT COUNT(*) FROM vinculos_talentos v INNER JOIN tipos_vinculo tv ON v.tipo_vinculo_id = tv.tipo_vinculo_id WHERE tv.nome = 'ESTAGIO') AS estagios,
+    (SELECT COUNT(*) FROM vinculos_talentos v INNER JOIN tipos_vinculo tv ON v.tipo_vinculo_id = tv.tipo_vinculo_id WHERE tv.nome = 'CONTRATACAO') AS contratacoes,
+    (SELECT COUNT(DISTINCT departamento_id) FROM vinculos_talentos) AS departamentos_beneficiados;
+```
 
 **7.9 — Educação e negócio, lado a lado**
 
 Monte uma consulta comparando, por período, indicadores educacionais (matrículas, certificados e vínculos) com indicadores corporativos (vendas, receita e pessoas contratadas). Quais limites existem nessa comparação, já que correlação não comprova causalidade?
 
+R:Existe o limite por conta do numero de matriculas
+```
+Periodo | Nova Matriculas | Novo vinculo | total vendas | total receitas
+2025-01	2	0	1	26341.16
+2025-02	1	0	2	16310.61
+2025-05	1	2	2	15848.38
+```
+
+```sql
+SELECT 
+    DATE_FORMAT(m.data_matricula, '%Y-%m') AS periodo,
+    COUNT(DISTINCT m.matricula_id) AS novas_matriculas,
+    COUNT(DISTINCT v_talento.vinculo_id) AS novos_vinculos,
+    COUNT(DISTINCT v.venda_id) AS total_vendas,
+    SUM(iv.quantidade * iv.preco_unitario) AS receita_vendas
+FROM matriculas m
+LEFT JOIN vinculos_talentos v_talento ON DATE_FORMAT(m.data_matricula, '%Y-%m') = DATE_FORMAT(v_talento.data_inicio, '%Y-%m')
+LEFT JOIN vendas v ON DATE_FORMAT(m.data_matricula, '%Y-%m') = DATE_FORMAT(v.data_venda, '%Y-%m')
+LEFT JOIN itens_venda iv ON v.venda_id = iv.venda_id
+GROUP BY periodo
+ORDER BY periodo ASC;
+```
+
 **7.10 — A próxima pergunta**
 
 Imagine que você terá recursos para coletar somente um dado novo para tornar essa história mais justa e completa. Qual seria ele: critério socioeconômico, satisfação de estudantes, área de interesse profissional, colocação após a formação ou outro? Justifique e descreva como protegeria a privacidade das pessoas.
+
+R:Satisfação dos estudantes, para ver o nivel de qualidade do curso e do objetivo de agregar novos talentos a empresa. protegeria por esse dados serem descritos de forma anonima sem vincular ao estudante.
 
 **7.11 — A próxima pergunta**
 
 O que faz a tabela **__vinculos_talentos__**?
 
+R: Ela vicula os estudantes a empresa.
+
 ## Nível 8: Duas Frentes, Duas Operações
 
 **8.1** Quanto custa manter a frente educacional em comparação à operação comercial? (Faça uma análise de custo total com salários, suprimentos e despesas gerais para cada departamento.)
 
+R:
+```
+Frente Operacional | Custo total de Salarios
+Frente Comercial/Corporativa	720743.07
+Frente Educacional	406100.00
+```
+
+```sql
+SELECT 
+    CASE 
+        WHEN d.educacional = 1 THEN 'Frente Educacional'
+        ELSE 'Frente Comercial/Corporativa'
+    END AS frente_operacional,
+    SUM(f.salario) AS custo_total_salarios
+FROM funcionarios f
+INNER JOIN departamentos d ON f.departamento_id = d.departamento_id
+GROUP BY frente_operacional;
+```
+
 **8.2** Quais escritórios concentram equipes comerciais e quais concentram equipes da escola?
+
+R:
+```
+Nome escritorio | Tipo de Operação
+Torre de Paris	Possui Escola/Educacional
+Wayne Offices	Exclusivo Comercial/Corporativo
+Stark Tower	Exclusivo Comercial/Corporativo
+Sala Winter	Exclusivo Comercial/Corporativo
+Arkham Base	Exclusivo Comercial/Corporativo
+House of Mystery	Exclusivo Comercial/Corporativo
+Shuri's Palace	Exclusivo Comercial/Corporativo
+Umbrella Corp	Exclusivo Comercial/Corporativo
+Campus de Lisboa	Exclusivo Comercial/Corporativo
+Archies Mad House	Exclusivo Comercial/Corporativo
+Verstebona	Possui Escola/Educacional
+Daily Planet Bureau	Exclusivo Comercial/Corporativo
+Castelo Encantado	Possui Escola/Educacional
+Cape Town Studio	Exclusivo Comercial/Corporativo
+Koboa Koboa	Possui Escola/Educacional
+Paititi Operations	Possui Escola/Educacional
+Baxter Building	Exclusivo Comercial/Corporativo
+Instituto Rio	Possui Escola/Educacional
+Castelo Principal	Possui Escola/Educacional
+Tokyo Lab	Possui Escola/Educacional
+```
+
+```sql
+SELECT 
+    esc.escritorio_nome,
+    CASE 
+        WHEN SUM(d.educacional) > 0 THEN 'Possui Escola/Educacional'
+        ELSE 'Exclusivo Comercial/Corporativo'
+    END AS tipo_operacao_escritorio
+FROM escritorios esc
+INNER JOIN departamentos d ON esc.escritorio_id = d.escritorio_id
+GROUP BY esc.escritorio_id, esc.escritorio_nome;
+```
 
 **8.3** A receita das vendas consegue sustentar investimentos educacionais?
 
+R: Total de vendas:863042.05 e custo educacional: 406100.00
+
+```sql
+SELECT 
+(SELECT SUM(iv.quantidade * iv.preco_unitario)
+FROM itens_venda iv) AS receita_total_vendas,
+    (SELECT SUM(f.salario) 
+    FROM funcionarios f INNER JOIN departamentos d ON f.departamento_id = d.departamento_id
+    WHERE d.educacional = 1) AS custo_total_educacao;
+```
+
 **8.4** Quais cargos e departamentos são compartilhados pelas duas frentes?
 
+R:
+```
+Nome do Cargo | Departamento | Frente
+Assistente Administrativo	Administração Executiva	Corporativo
+CMO	Marketing	Corporativo
+Representante de Vendas LATAM	Marketing	Corporativo
+Gerente de Recursos Humanos	Recursos Humanos	Corporativo
+Assistente de Compras	Recursos Humanos	Corporativo
+Assistente de Recursos Humanos	Recursos Humanos	Corporativo
+Gerente de Estoque	Logística	Corporativo
+Desenvolvedor Web	Tecnologia da Informação	Corporativo
+Analista de Qualidade	Tecnologia da Informação	Corporativo
+Relações Públicas	Relações Públicas	Corporativo
+Gerente de Vendas	Vendas	Corporativo
+Representante de Vendas	Vendas	Corporativo
+Contador	Finanças	Corporativo
+CFO	Finanças	Corporativo
+Gerente de Contabilidade	Contabilidade	Corporativo
+Cientista de Dados	Biotecnologia	Corporativo
+Senior Web Developer	Tecnologias Avançadas	Corporativo
+Cientista de Dados	Tecnologias Avançadas	Corporativo
+Cientista de Dados	Dados e Inteligência	Corporativo
+Analista de Atendimento	Experiência do Cliente	Corporativo
+Gerente de Operações	Operações LATAM	Corporativo
+Especialista de Segurança	Segurança da Informação	Corporativo
+Designer de Produto	Pesquisa e Desenvolvimento	Corporativo
+Especialista de Marketing Digital	Comércio Digital	Corporativo
+Gerente de Operações	Operações APAC	Corporativo
+Designer de Produto	Criação de Conteúdo	Corporativo
+Estoquista	Operações África	Corporativo
+Diretor	Poções	Educacional
+Mestre de Poções	Poções	Educacional
+Professor Titular	Transfiguração	Educacional
+Professor Assistente	Transfiguração	Educacional
+Professor Assistente	Projeções Astrais	Educacional
+Oficial de Segurança Biológia	Projeções Astrais	Educacional
+Tratador de Criaturas	Criaturas Mágicas	Educacional
+Guardião	Criaturas Mágicas	Educacional
+Professor Titular	Criaturas Mágicas	Educacional
+Aprendiz	Criaturas Mágicas	Educacional
+Diretor	Criaturas Mágicas	Educacional
+Bibliotecário Arcano	Biblioteca Arcana	Educacional
+Professor Titular	Biblioteca Arcana	Educacional
+Professor Assistente	Biblioteca Arcana	Educacional
+Diretor	Administração Educacional	Educacional
+Guardião	Administração Educacional	Educacional
+Professor Assistente	Administração Educacional	Educacional
+Secretário Administrativo	Administração Educacional	Educacional
+Professor Titular	Administração Educacional	Educacional
+Aprendiz	Administração Educacional	Educacional
+Professor Assistente	Astronomia	Educacional
+Diretor	Astronomia	Educacional
+Astrônomago	Astronomia	Educacional
+Aprendiz	Astronomia	Educacional
+Herbólogo	Herbologia	Educacional
+Diretor	Herbologia	Educacional
+Guardião	Herbologia	Educacional
+Aprendiz	Herbologia	Educacional
+```
+
+```sql
+SELECT DISTINCT 
+    c.cargo_nome,
+    d.departamento_nome,
+    CASE WHEN d.educacional = 1 THEN 'Educacional' ELSE 'Corporativo' END AS frente
+FROM funcionarios f
+INNER JOIN cargos c ON f.cargo_id = c.cargo_id
+INNER JOIN departamentos d ON f.departamento_id = d.departamento_id;
+```
+
 **8.5** Como a expansão internacional afeta vendas, equipes e o projeto educacional?
+
+R: Aumenta o numero de possiveis moedas se não for feito o cambio atraves do dollar ou otra moeda e aumenta o numero de escolas entre os paises trazendo um maior numero de dados também
 
 ## Nível 9: Análise Avançada com Agregações
 
 **9.1** Crie um relatório mostrando cada departamento com: nome do departamento, número de funcionários, salário total e média salarial.
 
+R:
+```
+Nome Departamento | Total Funcionarios | Salario total | Média salarial
+Administração Executiva	1	4653.76	4653.76
+Marketing	2	17197.79	8598.90
+Recursos Humanos	6	32442.93	5407.16
+Recursos Humanos	1	6035.47	6035.47
+Logística	4	29147.03	7286.76
+Tecnologia da Informação	6	53135.22	8855.87
+Relações Públicas	2	14866.99	7433.50
+Vendas	5	59390.76	11878.15
+Executivo	0		
+Finanças	6	46109.77	7684.96
+Contabilidade	1	13265.79	13265.79
+Biotecnologia	2	58526.95	29263.48
+Tecnologias Avançadas	4	80168.26	20042.07
+Dados e Inteligência	3	85328.25	28442.75
+Experiência do Cliente	3	19327.94	6442.65
+Operações LATAM	3	40925.89	13641.96
+Segurança da Informação	3	39900.07	13300.02
+Pesquisa e Desenvolvimento	3	29967.18	9989.06
+Comércio Digital	3	25804.49	8601.50
+Operações APAC	3	39909.61	13303.20
+Criação de Conteúdo	2	17564.49	8782.25
+Operações África	2	7074.43	3537.22
+Poções	4	51300.00	12825.00
+Transfiguração	3	25600.00	8533.33
+Projeções Astrais	6	43400.00	7233.33
+Criaturas Mágicas	8	51100.00	6387.50
+Biblioteca Arcana	7	32700.00	4671.43
+Administração Educacional	10	117100.00	11710.00
+Astronomia	5	38700.00	7740.00
+Herbologia	7	46200.00	6600.00
+Inovações	0		
+```
+
+```sql
+SELECT 
+    d.departamento_nome,
+    COUNT(f.funcionario_id) AS total_funcionarios,
+    SUM(f.salario) AS salario_total,
+    ROUND(AVG(f.salario), 2) AS media_salarial
+FROM departamentos d
+LEFT JOIN funcionarios f ON d.departamento_id = f.departamento_id
+GROUP BY d.departamento_id, d.departamento_nome;
+```
+
 **9.2** Liste os 3 cargos mais comuns na empresa e quantos funcionários ocupam cada cargo.
+
+R:
+```
+Cargo nome | total de ocupantes
+Professor Assistente	8
+Cientista de Dados	8
+Diretor	6
+```
+
+```sql
+SELECT 
+    c.cargo_nome,
+    COUNT(f.funcionario_id) AS total_ocupantes
+FROM funcionarios f
+INNER JOIN cargos c ON f.cargo_id = c.cargo_id
+GROUP BY c.cargo_id, c.cargo_nome
+ORDER BY total_ocupantes DESC
+LIMIT 3;
+```
 
 **9.3** Encontre todos os funcionários que ganham acima da média salarial de seus respectivos departamentos.
 
+R:
+```
+Nome/Sobrenome Funcionario | Salário | Departamento | Média Departamento
+Elisabeth	Braddock	11971.26	Marketing	8598.895000
+Den	Raphaely	13557.76	Recursos Humanos	5407.155000
+Matthew	Weiss	7959.36	Logística	7286.757500
+Payam	Kaufling	7902.10	Logística	7286.757500
+Diana	Lorentz	9054.44	Tecnologia da Informação	8855.870000
+Dick	Grayson	9401.37	Tecnologia da Informação	8855.870000
+Samus	Aran	12860.02	Tecnologia da Informação	8855.870000
+Hermann	Baer	9854.88	Relações Públicas	7433.495000
+John	Russell	16957.66	Vendas	11878.152000
+Karen	Partners	16435.94	Vendas	11878.152000
+Luis	Popp	8163.72	Finanças	7684.961667
+Lucius	Fox	15035.54	Finanças	7684.961667
+Spock	Sarek	34770.49	Biotecnologia	29263.475000
+Shuri	Udaku	32002.61	Tecnologias Avançadas	20042.065000
+Miles	Morales	29124.80	Dados e Inteligência	28442.750000
+Victor	Stone	33179.12	Dados e Inteligência	28442.750000
+Kamala	Khan	6803.69	Experiência do Cliente	6442.646667
+Elena	Rossi	6822.11	Experiência do Cliente	6442.646667
+Rogue	LeBeau	17673.60	Operações LATAM	13641.963333
+Ana	Costa	16876.26	Segurança da Informação	13300.023333
+Clint	Barton	11661.65	Pesquisa e Desenvolvimento	9989.060000
+Jean	Grey	11494.56	Pesquisa e Desenvolvimento	9989.060000
+Barbara	Gordon	9059.15	Comércio Digital	8601.496667
+Scott	Summers	11433.38	Comércio Digital	8601.496667
+Cyborg	Stone	16578.59	Operações APAC	13303.203333
+Barry	Allen	9230.10	Criação de Conteúdo	8782.245000
+Arthur	Curry	4208.78	Operações África	3537.215000
+Minerva	McGivver	15000.00	Poções	12825.000000
+Lucas	Pereira	18000.00	Poções	12825.000000
+Rodrigo	Alves	12000.00	Transfiguração	8533.333333
+Kingsley	Tremerraios	10500.00	Projeções Astrais	7233.333333
+Daniel	Ravenwood	9200.00	Projeções Astrais	7233.333333
+Fleur	Dascores	9200.00	Criaturas Mágicas	6387.500000
+Olympe	Maxime	14000.00	Criaturas Mágicas	6387.500000
+Fernanda	Lima	9500.00	Criaturas Mágicas	6387.500000
+Beatriz	Gonçalves	7200.00	Biblioteca Arcana	4671.428571
+Tomas	Ferreira	4900.00	Biblioteca Arcana	4671.428571
+Olivia	Moon	4700.00	Biblioteca Arcana	4671.428571
+Helena	Parker	18000.00	Administração Educacional	11710.000000
+Paulo	Andrade	45000.00	Administração Educacional	11710.000000
+Marina	Costa	22000.00	Administração Educacional	11710.000000
+Elizabeth	Madpreta	17000.00	Astronomia	7740.000000
+Nathan	Hawthorne	7800.00	Astronomia	7740.000000
+Haruki	Tanaka	16500.00	Herbologia	6600.000000
+Yuki	Sato	6800.00	Herbologia	6600.000000
+```
+
+```sql
+SELECT 
+    f.primeiro_nome,
+    f.sobrenome,
+    f.salario,
+    d.departamento_nome,
+    m.media_depto
+FROM funcionarios f
+INNER JOIN departamentos d ON f.departamento_id = d.departamento_id
+INNER JOIN (
+SELECT
+    departamento_id,
+    AVG(salario) AS media_depto
+    FROM funcionarios
+    GROUP BY departamento_id
+) m ON f.departamento_id = m.departamento_id
+WHERE f.salario > m.media_depto;
+```
+
 **9.4** Calcule a taxa de crescimento da empresa por ano (quantos funcionários foram contratados a cada ano).
+
+R:
+```
+Ano Contratação | Total de Contratação Ano | Total Ano Anterior | Taxa de crescimento porcentual
+1990	3	0	Ano Base
+1991	2	3	-33.33%
+1992	3	2	50.00%
+1993	3	3	0.00%
+1994	2	3	-33.33%
+1995	3	2	50.00%
+1996	3	3	0.00%
+1997	3	3	0.00%
+1998	3	3	0.00%
+1999	3	3	0.00%
+2000	2	3	-33.33%
+2001	3	2	50.00%
+2002	1	3	-66.67%
+2003	3	1	200.00%
+2004	2	3	-33.33%
+2005	3	2	50.00%
+2006	3	3	0.00%
+2007	2	3	-33.33%
+2008	3	2	50.00%
+2009	3	3	0.00%
+2010	3	3	0.00%
+2011	5	3	66.67%
+2012	4	5	-20.00%
+2013	4	4	0.00%
+2014	4	4	0.00%
+2015	6	4	50.00%
+2016	6	6	0.00%
+2017	6	6	0.00%
+2018	6	6	0.00%
+2019	6	6	0.00%
+2020	3	6	-50.00%
+2021	3	3	0.00%
+2022	3	3	0.00%
+2023	2	3	-33.33%
+2025	1	0	Ano Base
+```
+
+```sql
+SELECT 
+    atual.ano_contratacao,
+    atual.total_contratacoes AS total_contratacoes_ano,
+    COALESCE(anterior.total_contratacoes, 0) AS total_ano_anterior,
+    CASE 
+        WHEN anterior.total_contratacoes IS NULL OR anterior.total_contratacoes = 0 THEN 'Ano Base'
+        ELSE CONCAT(
+            ROUND(
+                ((atual.total_contratacoes - anterior.total_contratacoes) / anterior.total_contratacoes) * 100, 
+                2
+            ), 
+            '%'
+        )
+    END AS taxa_crescimento_percentual
+FROM (
+    -- Agrupa o total de contratados por ano
+    SELECT 
+        YEAR(data_contratacao) AS ano_contratacao,
+        COUNT(*) AS total_contratacoes
+    FROM funcionarios
+    GROUP BY YEAR(data_contratacao)
+) AS atual
+LEFT JOIN (
+    -- Mesma consulta, deslocada em 1 ano para trás para comparação
+    SELECT 
+        YEAR(data_contratacao) AS ano_contratacao,
+        COUNT(*) AS total_contratacoes
+    FROM funcionarios
+    GROUP BY YEAR(data_contratacao)
+) AS anterior ON atual.ano_contratacao = anterior.ano_contratacao + 1
+ORDER BY atual.ano_contratacao ASC;
+```
 
 **9.5** Crie um ranking dos vendedores, mostrando: nome do vendedor, número de vendas realizadas e receita total gerada.
 
+R:
+```
+Nome Vendedor | Total de Vendas | Receita Total
+John Russell	11	196953.14
+Jack Livingston	11	188362.86
+Jonathon Taylor	11	184155.75
+Kimberly Grant	10	150135.73
+Karen Partners	11	143434.57
+```
+
+```sql
+SELECT 
+    CONCAT(f.primeiro_nome, ' ', f.sobrenome) AS nome_vendedor,
+    COUNT(DISTINCT v.venda_id) AS total_vendas,
+    SUM(iv.quantidade * iv.preco_unitario) AS receita_total
+FROM vendas v
+INNER JOIN funcionarios f ON v.funcionario_id = f.funcionario_id
+INNER JOIN itens_venda iv ON v.venda_id = iv.venda_id
+GROUP BY f.funcionario_id, nome_vendedor
+ORDER BY receita_total DESC;
+```
+
 **9.6** Encontre os produtos que foram vendidos por apenas um vendedor.
+
+R:
+```
+Nome do Produto
+Capacete Iron Man Mark 5
+Sabre de luz de Mace Windu
+Pokébola clássica
+Capacete Darth Vader
+Escudo do Capitão América
+Blaster Imperial
+Capa do Batman
+Chapéu Seletor
+```
+
+```sql
+SELECT 
+    p.produto_nome
+FROM itens_venda iv
+INNER JOIN vendas v ON iv.venda_id = v.venda_id
+INNER JOIN produtos p ON iv.produto_id = p.produto_id
+GROUP BY p.produto_id, p.produto_nome
+HAVING COUNT(DISTINCT v.funcionario_id) = 1;
+```
 
 ---
 
@@ -778,9 +1355,106 @@ O departamento financeiro suspeita de irregularidades.
 
 **10.1** Encontre vendas que não possuem vendedor associado.
 
+R:
+```
+Venda ID | Referencia Origem | Data Venda | Cliente ID | Funcionario ID | Canal Venda ID | Status Venda ID
+7001	ERP-7001	2023-01-03		124	1	3
+7003	ERP-7003	2023-02-10		126	3	1
+7004	ERP-7004	2023-03-01		127	4	1
+7005	ERP-7005	2023-03-20		128	5	1
+7006	ERP-7006	2023-04-08		124	1	1
+7008	ERP-7008	2023-05-16		126	3	1
+7009	ERP-7009	2023-06-04		127	4	1
+7010	ERP-7010	2023-06-23		128	5	1
+7011	ERP-7011	2023-07-12		124	1	1
+7013	ERP-7013	2023-08-19		126	3	1
+7014	ERP-7014	2023-09-07		127	4	2
+7015	ERP-7015	2023-09-26		128	5	1
+7016	ERP-7016	2023-10-15		124	1	1
+7017	ERP-7017	2023-11-03		125	2	1
+7018	ERP-7018	2023-11-22		126	3	3
+7019	ERP-7019	2023-12-11		127	4	1
+7020	ERP-7020	2023-12-30		128	5	1
+7021	ERP-7021	2024-01-18		124	1	1
+7023	ERP-7023	2024-02-25		126	3	1
+7024	ERP-7024	2024-03-15		127	4	1
+7025	ERP-7025	2024-04-03		128	5	1
+7026	ERP-7026	2024-04-22		124	1	1
+7028	ERP-7028	2024-05-30		126	3	1
+7029	ERP-7029	2024-06-18		127	4	1
+7030	ERP-7030	2024-07-07		128	5	1
+7031	ERP-7031	2024-07-26		124	1	1
+7032	ERP-7032	2024-08-14		125	2	1
+7033	ERP-7033	2024-09-02		126	3	1
+7034	ERP-7034	2024-09-21		127	4	1
+7035	ERP-7035	2024-10-10		128	5	3
+7036	ERP-7036	2024-10-29		124	1	1
+7038	ERP-7038	2024-12-06		126	3	1
+7039	ERP-7039	2024-12-25		127	4	1
+7040	ERP-7040	2025-01-13		128	5	2
+7041	ERP-7041	2025-02-01		124	1	1
+7043	ERP-7043	2025-03-11		126	3	1
+7044	ERP-7044	2025-03-30		127	4	1
+7045	ERP-7045	2025-04-18		128	5	1
+7046	ERP-7046	2025-05-07		124	1	1
+7047	ERP-7047	2025-05-26		125	2	1
+7049	ERP-7049	2025-07-03		127	4	1
+7050	ERP-7050	2025-07-22		128	5	1
+7052	ERP-7052	2023-01-12		125	2	3
+7053	ERP-7053	2023-01-31		126	3	2
+7054	ERP-7054	2023-02-19		127	4	1
+						
+```
+
+```sql
+SELECT * 
+FROM vendas 
+WHERE cliente_id IS NULL;
+```
+
 **10.2** Verifique se há vendedores registrados nas vendas que não existem na coleção de funcionários.
 
+R: por conta da chave estrangeira o banco empedi registros de vendedores que não tenham em funcionarios e essa query abaixo confirma isso.
+
+```sql
+SELECT DISTINCT v.venda_id, v.funcionario_id
+FROM vendas v
+LEFT JOIN funcionarios f ON v.funcionario_id = f.funcionario_id
+WHERE f.funcionario_id IS NULL;
+```
+
 **10.3** Identifique produtos que aparecem nas vendas mas com preços unitários muito diferentes entre transações (variação > 10%).
+
+R:
+```
+Nome Produto | Menor Preço | Maior Preço
+Batarang de treino	198.88	248.62
+Lança-Teias	200.75	245.85
+Laço da Verdade	271.67	332.87
+Sentinela em miniatura	128.60	142.74
+Laço da Honestidade	566.42	670.79
+Batarangs oficiais	764.44	908.90
+Pokédex portátil	172.37	205.16
+Anel do Poder (réplica)	832.89	1025.63
+Master Sword (réplica)	1498.64	1702.13
+Buster Sword (réplica)	1123.55	1346.76
+Tesseract decorativo	6124.70	7053.19
+Blaster de Han Solo	341.85	409.25
+Manopla do Infinito	4304.41	5047.48
+Reator Arc decorativo	599.78	669.90
+Boné do treinador	43.59	50.20
+```
+
+```sql
+SELECT 
+    p.produto_nome,
+    MIN(iv.preco_unitario) AS menor_preco,
+    MAX(iv.preco_unitario) AS maior_preco
+FROM itens_venda iv
+INNER JOIN produtos p ON iv.produto_id = p.produto_id
+GROUP BY p.produto_id, p.produto_nome
+HAVING (MAX(iv.preco_unitario) - MIN(iv.preco_unitario)) / MIN(iv.preco_unitario) > 0.10;
+```
 
 **10.4** O CEO pediu um dashboard completo.
 
@@ -791,6 +1465,30 @@ Crie UMA ÚNICA query de agregação que retorne:
    - Número de escritórios
    - Receita total de vendas
    - Produto mais vendido
+
+   
+R:
+```
+Total de Funcionarios | Custo total de Salarios | Numero de Departamentos | Numero de Escritorios | Receita Total de Vendas |Produto mais vendido
+115	                      1126843.07	              31	                     20	                    863042.05	        Reator Arc decorativo
+```
+
+```sql
+SELECT 
+    (SELECT COUNT(*) FROM funcionarios) AS total_funcionarios,
+    (SELECT SUM(salario) FROM funcionarios) AS custo_total_salarios,
+    (SELECT COUNT(*) FROM departamentos) AS numero_departamentos,
+    (SELECT COUNT(*) FROM escritorios) AS numero_escritorios,
+    (SELECT SUM(quantidade * preco_unitario) FROM itens_venda) AS receita_total_vendas,
+    (
+        SELECT p.produto_nome 
+        FROM itens_venda iv 
+        INNER JOIN produtos p ON iv.produto_id = p.produto_id 
+        GROUP BY p.produto_id, p.produto_nome 
+        ORDER BY SUM(iv.quantidade) DESC 
+        LIMIT 1
+    ) AS produto_mais_vendido;
+```
 
 ## Nível 11: ETL do CSV
 
